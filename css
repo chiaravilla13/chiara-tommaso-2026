@@ -1,0 +1,80 @@
+:root{
+  --ink:#1b1b1b;
+  --muted:#6b6b6b;
+  --paper:#fbfbfb;
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  color:var(--ink);
+  background: var(--paper) url("assets/img/sfondo.jpg") center/cover no-repeat fixed;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.page{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:56px 18px;
+  gap:26px;
+}
+
+.hero{
+  text-align:center;
+  margin-top:10px;
+}
+
+.names{
+  font-family: "Beautiful Delicious Script", "Brush Script MT", cursive; /* placeholder */
+  font-size:54px;
+  line-height:1.1;
+  margin:0;
+}
+
+.amp{
+  font-family: "Beautiful Delicious Script", "Brush Script MT", cursive;
+  font-size:34px;
+  margin:10px 0;
+}
+
+.card{
+  width:min(640px, 100%);
+  text-align:center;
+  padding:34px 22px;
+  background: rgba(255,255,255,0.72);
+  border-radius:14px;
+  backdrop-filter: blur(2px);
+}
+
+.lead{
+  font-size:28px;
+  margin:0 0 18px;
+}
+
+.date{
+  letter-spacing:0.18em;
+  font-weight:600;
+  margin:0 0 26px;
+  font-size:22px;
+}
+
+.block{
+  margin:18px 0 0;
+  font-size:24px;
+}
+
+.bold{ font-weight:600; }
+
+.title{
+  font-size:26px;
+  margin:0 0 10px;
+}
+
+.small{
+  margin:0;
+  color:var(--muted);
+  font-size:18px;
+}
