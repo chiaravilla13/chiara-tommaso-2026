@@ -1,4 +1,4 @@
-https://script.google.com/macros/s/AKfycbyPGhee1wf-LfZrrfsLAfLfqMNAL4wg-oZ9DakUzLQvo_KtcNuQ6R8b8L628_1yTrg/execconst ENDPOINT_URL = "INCOLLA_QUI_URL_APPS_SCRIPT";
+const ENDPOINT_URL = "https://script.google.com/macros/s/AKfycbyPGhee1wf-LfZrrfsLAfLfqMNAL4wg-oZ9DakUzLQvo_KtcNuQ6R8b8L628_1yTrg/exec";
 
 const form = document.getElementById("rsvpForm");
 const people = document.getElementById("people");
@@ -39,7 +39,7 @@ form.addEventListener("submit", async (e) => {
   e.preventDefault();
   statusEl.textContent = "";
 
-  if (!ENDPOINT_URL || ENDPOINT_URL.startsWith("INCOLLA_QUI")) {
+  if (!ENDPOINT_URL) {
     statusEl.textContent = "Manca l’URL del Google Apps Script.";
     return;
   }
@@ -67,7 +67,6 @@ form.addEventListener("submit", async (e) => {
   submitBtn.textContent = "Invio…";
 
   try {
-    // no-cors: salva comunque sul foglio (non possiamo leggere la risposta)
     await fetch(ENDPOINT_URL, {
       method: "POST",
       mode: "no-cors",
@@ -78,7 +77,6 @@ form.addEventListener("submit", async (e) => {
     statusEl.textContent = "✅ Conferma inviata! Grazie 💛";
     form.reset();
 
-    // ricrea il campo partecipante
     people.innerHTML = "";
     addPersonField();
   } catch (err) {
