@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Chiara & Tommaso — 18 Settembre 2026</title>
+
+  <!-- Cormorant Garamond (Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <main class="page">
+    <header class="hero">
+      <p class="names">Chiara</p>
+      <p class="amp">&</p>
+      <p class="names">Tommaso</p>
+    </header>
+
+    <section class="card">
+      <p class="lead">Da un viaggio “per caso” ad una scelta per sempre: ci sposiamo il</p>
+      <p class="date">18 | SETTEMBRE | 2026</p>
+
+      <div class="block">
+        <p>Alle ore 11:00</p>
+        <p class="bold">Chiesa di Sant’Eustorgio</p>
+        <p>Via Umberto I, 20862 Arcore MB</p>
+      </div>
+
+      <div class="block">
+        <p>Dopo la cerimonia ci sposteremo a</p>
+        <p class="bold">Villa Mattioli</p>
+        <p>Via Rapazzini, 2, 20855 Lesmo MB</p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 class="title">Conferma presenza</h2>
+      <p class="small">
+        (Qui metteremo il form RSVP. Per ora è solo un segnaposto.)
+      </p>
+    </section>
+  </main>
+</body>
+</html>
