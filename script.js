@@ -1,5 +1,4 @@
-// Incolla qui l’URL del tuo Apps Script Web App (quello che finisce con /exec)
-const ENDPOINT_URL = "INCOLLA_QUI_URL_APPS_SCRIPT";
+https://script.google.com/macros/s/AKfycbyPGhee1wf-LfZrrfsLAfLfqMNAL4wg-oZ9DakUzLQvo_KtcNuQ6R8b8L628_1yTrg/execconst ENDPOINT_URL = "INCOLLA_QUI_URL_APPS_SCRIPT";
 
 const form = document.getElementById("rsvpForm");
 const people = document.getElementById("people");
