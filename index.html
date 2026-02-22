@@ -39,11 +39,55 @@
     </section>
 
     <section class="card">
-      <h2 class="title">Conferma presenza</h2>
-      <p class="small">
-        (Qui metteremo il form RSVP. Per ora è solo un segnaposto.)
-      </p>
-    </section>
+  <h2 class="title">Conferma presenza</h2>
+  <p class="small">Inserisci i nominativi completi e indica eventuali allergie/intolleranze.</p>
+
+  <form id="rsvpForm" class="form" autocomplete="on">
+    <!-- Honeypot anti-spam (non compilare) -->
+    <input type="text" name="website" id="website" class="hp" tabindex="-1" autocomplete="off" />
+
+    <div class="row">
+      <label class="label">Parteciperai?</label>
+      <div class="segmented" role="group" aria-label="RSVP">
+        <label class="seg">
+          <input type="radio" name="rsvp" value="Sì" required>
+          <span>Sì</span>
+        </label>
+        <label class="seg">
+          <input type="radio" name="rsvp" value="No" required>
+          <span>No</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="between">
+        <label class="label">Nominativi</label>
+        <button type="button" class="btn ghost" id="addPerson">+ Aggiungi persona</button>
+      </div>
+
+      <div id="people" class="people"></div>
+      <p class="hint">Un nome e cognome per riga (es. “Luca Bianchi”).</p>
+    </div>
+
+    <div class="row" id="allergieRow">
+      <label class="label" for="allergie">Allergie / intolleranze (facoltativo)</label>
+      <textarea class="input textarea" id="allergie" rows="3"
+        placeholder="Es. glutine, lattosio, frutta a guscio…"></textarea>
+    </div>
+
+    <div class="row">
+      <label class="check">
+        <input type="checkbox" required />
+        <span>Acconsento al trattamento dei dati per la gestione dell’evento (saranno cancellati dopo il matrimonio).</span>
+      </label>
+    </div>
+
+    <button class="btn primary" type="submit" id="submitBtn">Invia conferma</button>
+    <p class="status" id="status" aria-live="polite"></p>
+  </form>
+</section>
   </main>
+  <script src="script.js"></script>
 </body>
 </html>
