@@ -236,3 +236,27 @@ body{
   .block{ font-size:20px; }
   .input, .seg span{ font-size:16px; }
 }
+/* Fix testo bottone su mobile */
+.btn,
+.btn.primary{
+  color: var(--ink);
+  -webkit-text-fill-color: var(--ink); /* iOS Safari */
+}
+
+.btn.primary{
+  background: rgba(255,255,255,.92);
+}
+
+/* Quando è disabilitato durante l'invio */
+.btn.primary:disabled{
+  opacity: 0.7;
+}
+@media (max-width: 420px){
+  .btn.primary{
+    border: 1px solid rgba(0,0,0,.18);
+  }
+.btn.primary{
+  color: #1b1b1b;
+  background: rgba(255,255,255,.92);
+  text-shadow: none;
+}
