@@ -78,3 +78,161 @@ body{
   color:var(--muted);
   font-size:18px;
 }
+/* =========================
+   RSVP Form styles
+========================= */
+
+.form{
+  text-align:left;
+  margin-top:18px;
+}
+
+.row{
+  margin:14px 0;
+}
+
+.label{
+  display:block;
+  font-size:16px;
+  margin:0 0 8px;
+  font-weight:500;
+}
+
+.input{
+  width:100%;
+  padding:12px 12px;
+  border-radius:12px;
+  border:1px solid rgba(0,0,0,.12);
+  background: rgba(255,255,255,.85);
+  font-family: inherit;          /* Cormorant Garamond */
+  font-size:18px;
+  outline:none;
+}
+
+.textarea{
+  resize: vertical;
+}
+
+/* RSVP toggle (Sì/No) */
+.segmented{
+  display:flex;
+  gap:10px;
+}
+
+.seg{
+  flex:1;
+  border:1px solid rgba(0,0,0,.12);
+  border-radius:12px;
+  overflow:hidden;
+  background: rgba(255,255,255,.70);
+}
+
+.seg input{
+  display:none;
+}
+
+.seg span{
+  display:block;
+  padding:12px 10px;
+  text-align:center;
+  cursor:pointer;
+  font-size:18px;
+}
+
+.seg input:checked + span{
+  background: rgba(0,0,0,.06);
+  font-weight:600;
+}
+
+/* Nominativi + bottone add */
+.between{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.people{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.personRow{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.personRow .input{
+  flex:1;
+}
+
+/* Buttons */
+.btn{
+  border:1px solid rgba(0,0,0,.12);
+  background: rgba(255,255,255,.75);
+  padding:10px 12px;
+  border-radius:12px;
+  cursor:pointer;
+  font-family: inherit;
+  font-size:16px;
+}
+
+.btn.primary{
+  width:100%;
+  padding:12px 14px;
+  font-size:18px;
+  font-weight:600;
+  background: rgba(255,255,255,.90);
+}
+
+.btn.ghost{
+  padding:8px 10px;
+  font-size:14px;
+}
+
+.btn.danger{
+  padding:10px 12px;
+  font-size:14px;
+}
+
+/* Helper texts */
+.hint{
+  margin:8px 0 0;
+  color:var(--muted);
+  font-size:14px;
+}
+
+.status{
+  margin:12px 0 0;
+  text-align:center;
+  font-size:16px;
+  min-height:22px;
+}
+
+.check{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  font-size:14px;
+  color:var(--muted);
+}
+
+/* Honeypot anti-spam (invisibile) */
+.hp{
+  position:absolute;
+  left:-10000px;
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}
+
+/* Mobile tuning */
+@media (max-width: 420px){
+  .lead{ font-size:22px; }
+  .date{ font-size:18px; }
+  .block{ font-size:20px; }
+  .input, .seg span{ font-size:16px; }
+}
