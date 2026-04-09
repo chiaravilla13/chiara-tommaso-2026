@@ -285,3 +285,94 @@ button, .btn{ -webkit-appearance:none; appearance:none; }
   .input, .seg span{ font-size:16px; }
   .heart-mark svg{ width:155px; }
 }
+
+/* ===== NAV ===== */
+.topnav{
+  width:min(720px, 100%);
+  display:flex;
+  justify-content:center;
+  gap:16px;
+  padding:10px 12px;
+  margin:0 auto 14px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background: rgba(255,255,255,.55);
+  backdrop-filter: blur(2px);
+}
+
+.navlink{
+  text-decoration:none;
+  color:var(--ink);
+  font-weight:600;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  font-size:12px;
+  padding:8px 10px;
+  border-radius:999px;
+}
+.navlink:hover{
+  background: rgba(31,47,74,.08);
+}
+
+/* ===== MONOGRAM + CUORI ===== */
+.marks{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+  margin:4px 0 10px;
+}
+
+.mono{
+  font-family:"Beautiful Delicious Script","Waterfall","Brush Script MT",cursive;
+  font-size:62px;
+  line-height:1;
+  color: var(--ivory);
+  opacity:.95;
+  letter-spacing:.04em;
+  text-shadow: 0 1px 0 rgba(0,0,0,.08);
+}
+
+.ampmark{
+  margin:0 6px;
+  font-size:0.78em;
+}
+
+/* già avevi heart-mark; qui la rendiamo un filo più “stampata” */
+.heart-mark svg{ width:180px; }
+.heart-mark path{
+  stroke: var(--ivory);
+  stroke-width:2.2;
+  opacity:.95;
+  filter: drop-shadow(0 1px 0 rgba(0,0,0,.06));
+}
+
+/* ===== FORM: testi più grandi ===== */
+.label{ font-size:18px; }           /* era 16 */
+.small{ font-size:18px; }           /* descrizione sotto “Conferma presenza” */
+.hint{ font-size:15px; }
+.check{ font-size:15px; }
+
+.input{ font-size:19px; }           /* era 18 */
+.seg span{ font-size:19px; }        /* era 18 */
+.btn{ font-size:17px; }
+.btn.primary{ font-size:19px; }
+
+/* Mobile */
+@media (max-width: 420px){
+  .label{ font-size:17px; }
+  .input, .seg span{ font-size:17px; }
+  .btn.primary{ font-size:18px; }
+
+  .mono{ font-size:54px; }
+  .heart-mark svg{ width:155px; }
+
+  .topnav{
+    gap:8px;
+    padding:8px 10px;
+  }
+  .navlink{
+    font-size:11px;
+    padding:7px 8px;
+  }
+}
