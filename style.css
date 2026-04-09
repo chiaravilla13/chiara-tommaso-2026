@@ -441,3 +441,49 @@ button, .btn{ -webkit-appearance:none; appearance:none; }
   .mono{ font-size:54px; }
   .heart-mark svg{ width:155px; }
 }
+/* ===== NAV minimale “partecipazione” ===== */
+.nav{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  margin:0 auto 12px;
+  padding:6px 0 10px;
+  width:min(680px, 100%);
+  border-bottom: 1px solid rgba(244,233,214,.75); /* avorio */
+}
+
+.nav__link{
+  text-decoration:none;
+  color: var(--muted);
+  font-weight:600;
+  letter-spacing:.10em;
+  text-transform:uppercase;
+  font-size:12px;
+  padding:6px 2px;
+}
+
+.nav__sep{
+  color: rgba(31,47,74,.30);
+  font-size:12px;
+}
+
+.nav__link.is-active{
+  color: var(--ink);
+}
+
+.nav__link:hover{
+  color: var(--ink);
+}
+
+/* Mobile */
+@media (max-width: 420px){
+  .nav{
+    gap:8px;
+    padding-bottom:8px;
+  }
+  .nav__link{
+    font-size:11px;
+    letter-spacing:.08em;
+  }
+}
