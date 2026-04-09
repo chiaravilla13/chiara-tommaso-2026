@@ -487,3 +487,84 @@ button, .btn{ -webkit-appearance:none; appearance:none; }
     letter-spacing:.08em;
   }
 }
+/* ===== MAPPA ===== */
+.mapWrap{
+  margin:14px 0 0;
+  border:1px solid var(--line);
+  border-radius:14px;
+  overflow:hidden;
+  background: rgba(255,255,255,.75);
+}
+.mapPlaceholder{
+  padding:28px 14px;
+  text-align:center;
+  color: var(--muted);
+  font-size:16px;
+}
+.mapWrap iframe{
+  width:100%;
+  height:380px;
+  border:0;
+  display:block;
+}
+@media (max-width: 420px){
+  .mapWrap iframe{ height:320px; }
+}
+
+/* ===== TIMELINE TAPPE ===== */
+.trip{
+  margin:18px 0 0;
+  padding:6px 0 0;
+}
+
+.stop{
+  position:relative;
+  display:flex;
+  gap:14px;
+  padding:10px 0 10px 2px;
+}
+
+.stop::before{
+  content:"";
+  position:absolute;
+  left:8px;
+  top:0;
+  bottom:0;
+  width:1px;
+  background: rgba(31,47,74,.18);
+}
+
+.stop__pin{
+  width:16px;
+  height:16px;
+  border-radius:50%;
+  margin-top:6px;
+  border:1px solid rgba(31,47,74,.25);
+  background: rgba(244,233,214,.85); /* avorio */
+  box-shadow: 0 1px 0 rgba(0,0,0,.06);
+  flex:0 0 16px;
+  position:relative;
+  z-index:1;
+}
+
+.stop__content{
+  flex:1;
+  padding-left:8px;
+}
+
+.stop__place{
+  margin:0;
+  font-size:20px;
+  color: var(--ink);
+}
+
+.stop__meta{
+  margin:4px 0 0;
+  font-size:16px;
+  color: var(--muted);
+}
+
+@media (max-width: 420px){
+  .stop__place{ font-size:18px; }
+  .stop__meta{ font-size:15px; }
+}
