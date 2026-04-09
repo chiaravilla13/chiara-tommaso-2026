@@ -508,7 +508,7 @@ button, .btn{ -webkit-appearance:none; appearance:none; }
   display:block;
 }
 @media (max-width: 420px){
-  .mapWrap iframe{ height:320px; }
+.mapWrap iframe{ height:440px; }
 }
 
 /* ===== TIMELINE TAPPE ===== */
