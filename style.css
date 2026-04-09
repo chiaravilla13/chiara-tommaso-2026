@@ -399,3 +399,45 @@ button, .btn{ -webkit-appearance:none; appearance:none; }
 @media (max-width: 420px){
   .mapWrap iframe{ height:320px; }
 }
+
+/* ===== Monogramma in avorio (definitivo) ===== */
+.mono{
+  font-family:"Beautiful Delicious Script","Waterfall","Brush Script MT",cursive;
+  font-size:64px;
+  line-height:1;
+  color: var(--ivory);
+  opacity: .95;
+  letter-spacing: .04em;
+  text-shadow: 0 1px 0 rgba(0,0,0,.08);
+}
+
+.ampmark{
+  margin:0 6px;
+  font-size:0.78em;
+}
+
+/* Cuori in avorio */
+.heart-mark path{
+  fill:none;
+  stroke: var(--ivory);
+  stroke-width:2.2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  opacity:.95;
+  filter: drop-shadow(0 1px 0 rgba(0,0,0,.06));
+}
+
+/* Spaziatura blocco monogramma+cuori */
+.marks{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+  margin:4px 0 10px;
+}
+
+/* Mobile */
+@media (max-width: 420px){
+  .mono{ font-size:54px; }
+  .heart-mark svg{ width:155px; }
+}
