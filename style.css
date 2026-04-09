@@ -376,3 +376,26 @@ button, .btn{ -webkit-appearance:none; appearance:none; }
     padding:7px 8px;
   }
 }
+
+.mapWrap{
+  margin:14px 0 0;
+  border:1px solid var(--line);
+  border-radius:14px;
+  overflow:hidden;
+  background: rgba(255,255,255,.75);
+}
+.mapPlaceholder{
+  padding:28px 14px;
+  text-align:center;
+  color: var(--muted);
+  font-size:16px;
+}
+.mapWrap iframe{
+  width:100%;
+  height:380px;
+  border:0;
+  display:block;
+}
+@media (max-width: 420px){
+  .mapWrap iframe{ height:320px; }
+}
