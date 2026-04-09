@@ -1,7 +1,11 @@
 :root{
-  --ink:#1b1b1b;
-  --muted:#6b6b6b;
+  /* palette partecipazione */
+  --ink:#1f2f4a;         /* blu testo */
+  --muted:#51627d;       /* blu/grigio */
   --paper:#fbfbfb;
+  --ivory:#F4E9D6;       /* avorio decorazioni */
+  --card:rgba(255,255,255,.76);
+  --line:rgba(31,47,74,.16);
 }
 
 *{ box-sizing:border-box; }
@@ -9,8 +13,39 @@
 body{
   margin:0;
   color:var(--ink);
-  background: var(--paper) url("assets/img/sfondo.jpg") center/cover no-repeat fixed;
-  font-family: "Cormorant Garamond", serif;
+  background: var(--paper);
+  font-family:"Cormorant Garamond", serif;
+}
+
+/* sfondo grafico */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:url("assets/img/sfondo.jpg") center/cover no-repeat;
+  opacity:.55;
+  pointer-events:none;
+  z-index:-2;
+}
+
+/* velo avorio leggero */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background: var(--ivory);
+  opacity:.10;
+  pointer-events:none;
+  z-index:-1;
+}
+
+/* --- Tipografia nomi (identico se carichi woff2) --- */
+@font-face{
+  font-family:"Beautiful Delicious Script";
+  src: url("assets/fonts/BeautifulDeliciousScript.woff2") format("woff2");
+  font-weight:400;
+  font-style:normal;
+  font-display:swap;
 }
 
 .page{
@@ -19,38 +54,75 @@ body{
   flex-direction:column;
   align-items:center;
   padding:56px 18px;
-  gap:26px;
+  gap:22px;
 }
 
 .hero{
   text-align:center;
-  margin-top:10px;
+  margin-top:8px;
+}
+
+.heart-mark{
+  display:flex;
+  justify-content:center;
+  margin:0 0 10px;
+}
+
+.heart-mark svg{
+  width:180px;
+  height:auto;
+}
+
+.heart-mark path{
+  fill:none;
+  stroke: var(--ivory);
+  stroke-width:2.2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  opacity:.95;
+  filter: drop-shadow(0 1px 0 rgba(0,0,0,.06));
 }
 
 .names{
-  font-family: "Beautiful Delicious Script", "Brush Script MT", cursive; /* placeholder */
-  font-size:54px;
-  line-height:1.1;
+  font-family:"Beautiful Delicious Script","Waterfall","Brush Script MT",cursive;
+  font-size:68px;
+  line-height:1.0;
   margin:0;
+  color:var(--ink);
 }
 
-.amp{
-  font-family: "Beautiful Delicious Script", "Brush Script MT", cursive;
-  font-size:34px;
-  margin:10px 0;
+.surnames{
+  margin:10px 0 0;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  font-weight:600;
+  color:var(--ink);
+  font-size:16px;
+}
+
+.surnames .dot{
+  display:inline-block;
+  margin:0 .6em;
+  opacity:.6;
 }
 
 .card{
-  width:min(640px, 100%);
+  width:min(680px, 100%);
   text-align:center;
-  padding:34px 22px;
-  background: rgba(255,255,255,0.72);
-  border-radius:14px;
+  padding:32px 22px;
+  background: var(--card);
+  border-radius:16px;
+  border:1px solid var(--line);
   backdrop-filter: blur(2px);
 }
 
 .lead{
-  font-size:28px;
+  font-size:26px;
+  margin:0 0 6px;
+}
+
+.lead2{
+  font-size:22px;
   margin:0 0 18px;
 }
 
@@ -58,93 +130,76 @@ body{
   letter-spacing:0.18em;
   font-weight:600;
   margin:0 0 26px;
-  font-size:22px;
+  font-size:20px;
 }
 
 .block{
   margin:18px 0 0;
-  font-size:24px;
+  font-size:22px;
 }
 
 .bold{ font-weight:600; }
 
 .title{
-  font-size:26px;
-  margin:0 0 10px;
+  font-size:24px;
+  margin:0 0 8px;
+  font-weight:600;
 }
 
 .small{
-  margin:0;
+  margin:0 0 12px;
   color:var(--muted);
-  font-size:18px;
-}
-/* =========================
-   RSVP Form styles
-========================= */
-
-.form{
-  text-align:left;
-  margin-top:18px;
+  font-size:16px;
 }
 
-.row{
-  margin:14px 0;
-}
+/* ===== FORM ===== */
+.form{ text-align:left; margin-top:14px; }
+.row{ margin:14px 0; }
 
 .label{
   display:block;
   font-size:16px;
   margin:0 0 8px;
-  font-weight:500;
+  font-weight:600;
+  color:var(--ink);
 }
 
 .input{
   width:100%;
   padding:12px 12px;
   border-radius:12px;
-  border:1px solid rgba(0,0,0,.12);
-  background: rgba(255,255,255,.85);
-  font-family: inherit;          /* Cormorant Garamond */
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.88);
+  font-family: inherit;
   font-size:18px;
   outline:none;
+  color:var(--ink);
 }
 
-.textarea{
-  resize: vertical;
-}
+.textarea{ resize: vertical; }
 
-/* RSVP toggle (Sì/No) */
-.segmented{
-  display:flex;
-  gap:10px;
-}
-
+.segmented{ display:flex; gap:10px; }
 .seg{
   flex:1;
-  border:1px solid rgba(0,0,0,.12);
+  border:1px solid var(--line);
   border-radius:12px;
   overflow:hidden;
-  background: rgba(255,255,255,.70);
+  background: rgba(255,255,255,.75);
 }
-
-.seg input{
-  display:none;
-}
-
+.seg input{ display:none; }
 .seg span{
   display:block;
   padding:12px 10px;
   text-align:center;
   cursor:pointer;
   font-size:18px;
+  color:var(--ink);
 }
-
 .seg input:checked + span{
-  background: rgba(0,0,0,.06);
-  font-weight:600;
+  background: rgba(31,47,74,.08);
+  font-weight:700;
 }
 
-/* Nominativi + bottone add */
 .between{
   display:flex;
   align-items:center;
@@ -152,63 +207,45 @@ body{
   gap:12px;
 }
 
-.people{
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
+.people{ display:flex; flex-direction:column; gap:10px; }
+.personRow{ display:flex; gap:10px; align-items:center; }
+.personRow .input{ flex:1; }
 
-.personRow{
-  display:flex;
-  gap:10px;
-  align-items:center;
-}
+/* Bottoni (fix definitivo iOS/Android) */
+button, .btn{ -webkit-appearance:none; appearance:none; }
 
-.personRow .input{
-  flex:1;
-}
-
-/* Buttons */
 .btn{
-  border:1px solid rgba(0,0,0,.12);
-  background: rgba(255,255,255,.75);
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.78);
   padding:10px 12px;
   border-radius:12px;
   cursor:pointer;
   font-family: inherit;
   font-size:16px;
+  color:var(--ink) !important;
+  -webkit-text-fill-color: var(--ink) !important;
 }
 
 .btn.primary{
   width:100%;
   padding:12px 14px;
   font-size:18px;
-  font-weight:600;
-  background: rgba(255,255,255,.90);
+  font-weight:700;
+  background-color: rgba(255,255,255,.92) !important;
+  border:1px solid rgba(31,47,74,.22) !important;
+  color:var(--ink) !important;
+  -webkit-text-fill-color: var(--ink) !important;
 }
 
-.btn.ghost{
-  padding:8px 10px;
-  font-size:14px;
-}
+.btn.primary:disabled{ opacity:.7; }
 
-.btn.danger{
-  padding:10px 12px;
-  font-size:14px;
-}
+.btn.ghost{ padding:8px 10px; font-size:14px; }
+.btn.danger{ padding:10px 12px; font-size:14px; }
 
-/* Helper texts */
 .hint{
   margin:8px 0 0;
   color:var(--muted);
   font-size:14px;
-}
-
-.status{
-  margin:12px 0 0;
-  text-align:center;
-  font-size:16px;
-  min-height:22px;
 }
 
 .check{
@@ -219,7 +256,15 @@ body{
   color:var(--muted);
 }
 
-/* Honeypot anti-spam (invisibile) */
+.status{
+  margin:12px 0 0;
+  text-align:center;
+  font-size:16px;
+  min-height:22px;
+  color:var(--ink);
+}
+
+/* honeypot invisibile */
 .hp{
   position:absolute;
   left:-10000px;
@@ -229,50 +274,14 @@ body{
   overflow:hidden;
 }
 
-/* Mobile tuning */
+/* Mobile */
 @media (max-width: 420px){
+  .names{ font-size:56px; }
+  .surnames{ font-size:14px; }
   .lead{ font-size:22px; }
-  .date{ font-size:18px; }
+  .lead2{ font-size:18px; }
   .block{ font-size:20px; }
+  .date{ font-size:18px; }
   .input, .seg span{ font-size:16px; }
-}
-/* Fix testo bottone su mobile */
-.btn,
-.btn.primary{
-  color: var(--ink);
-  -webkit-text-fill-color: var(--ink); /* iOS Safari */
-}
-
-.btn.primary{
-  background: rgba(255,255,255,.92);
-}
-
-/* Quando è disabilitato durante l'invio */
-.btn.primary:disabled{
-  opacity: 0.7;
-}
-@media (max-width: 420px){
-  .btn.primary{
-    border: 1px solid rgba(0,0,0,.18);
-  }
-.btn.primary{
-  color: #1b1b1b;
-  background: rgba(255,255,255,.92);
-  text-shadow: none;
-}
-
-  /* iOS Safari fix: testo bottone invisibile */
-button,
-.btn{
-  -webkit-appearance: none;
-  appearance: none;
-}
-
-.btn.primary{
-  color: #1b1b1b !important;
-  -webkit-text-fill-color: #1b1b1b !important;  /* iOS Safari */
-  background-color: rgba(255,255,255,.92) !important;
-  border: 1px solid rgba(0,0,0,.18) !important;
-  font-family: "Cormorant Garamond", serif;
-  line-height: 1.2;
+  .heart-mark svg{ width:155px; }
 }
