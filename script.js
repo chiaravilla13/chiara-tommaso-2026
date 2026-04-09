@@ -5,6 +5,7 @@ const people = document.getElementById("people");
 const addPersonBtn = document.getElementById("addPerson");
 const statusEl = document.getElementById("status");
 const submitBtn = document.getElementById("submitBtn");
+const allergieRow = document.getElementById("allergieRow");
 
 function addPersonField(value = "") {
   const row = document.createElement("div");
@@ -32,20 +33,24 @@ function addPersonField(value = "") {
 
 // campo iniziale
 addPersonField();
-
 addPersonBtn.addEventListener("click", () => addPersonField());
+
+function toggleAllergie() {
+  const rsvp = form.querySelector('input[name="rsvp"]:checked')?.value || "";
+  if (!allergieRow) return;
+  allergieRow.style.display = (rsvp === "No") ? "none" : "block";
+}
+form.querySelectorAll('input[name="rsvp"]').forEach(r => r.addEventListener("change", toggleAllergie));
+toggleAllergie();
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   statusEl.textContent = "";
 
-  if (!ENDPOINT_URL) {
-    statusEl.textContent = "Manca l’URL del Google Apps Script.";
-    return;
-  }
-
   const rsvp = form.querySelector('input[name="rsvp"]:checked')?.value || "";
-  const allergie = document.getElementById("allergie").value.trim();
+  let allergie = document.getElementById("allergie").value.trim();
+  if (rsvp === "No") allergie = "";
+
   const website = document.getElementById("website").value.trim(); // honeypot
 
   const partecipanti = Array.from(people.querySelectorAll("input"))
@@ -79,6 +84,7 @@ form.addEventListener("submit", async (e) => {
 
     people.innerHTML = "";
     addPersonField();
+    toggleAllergie();
   } catch (err) {
     statusEl.textContent = "❌ Errore nell’invio. Riprova tra poco.";
   } finally {
