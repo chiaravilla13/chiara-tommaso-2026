@@ -17,34 +17,48 @@ body{
   font-family:"Cormorant Garamond", serif;
 }
 
-/* Sfondo grafico principale */
+/* ===== SFONDI PAGINE ===== */
+/* NB: i nomi file sono case-sensitive: sfondo-rsvp-2.PNG è diverso da .png */
+
+body{
+  margin:0;
+  color:var(--ink);
+  background: var(--paper); /* fallback */
+  font-family:"Cormorant Garamond", serif;
+}
+
+/* strato immagine sfondo */
 body::before{
   content:"";
   position:fixed;
   inset:0;
-  background:url("assets/img/sfondo.jpg") center/cover no-repeat;
-  opacity:.55;
+  background-position:center;
+  background-size:cover;
+  background-repeat:no-repeat;
+  opacity:1;              /* l'immagine è già “delicata”, quindi piena */
   pointer-events:none;
   z-index:-2;
 }
 
-/* Overlay “cartolina vintage” + velo avorio (UNICO body::after) */
+/* velo leggero per armonizzare (opzionale ma consigliato) */
 body::after{
   content:"";
   position:fixed;
   inset:0;
+  background: rgba(244,233,214,0.06);
   pointer-events:none;
   z-index:-1;
+}
 
-  /* pattern timbri + flight path + cuori */
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='700' viewBox='0 0 900 700'%3E%3Cg fill='none' stroke='%23F4E9D6' stroke-width='2' opacity='0.32'%3E%3Cpath d='M95 140c65-55 170-65 250-20 80 45 155 40 230-10 75-50 165-55 250 5' stroke-dasharray='7 10'/%3E%3Ccircle cx='335' cy='150' r='54'/%3E%3Ccircle cx='335' cy='150' r='38'/%3E%3Cpath d='M305 150h60M335 120v60'/%3E%3Ccircle cx='710' cy='525' r='58'/%3E%3Ccircle cx='710' cy='525' r='40'/%3E%3Cpath d='M675 525h70'/%3E%3C/g%3E%3Cg fill='none' stroke='%231f2f4a' stroke-width='2' opacity='0.10'%3E%3Cpath d='M135 520c120-140 250-170 365-95 115 75 215 55 300-15' stroke-dasharray='6 12'/%3E%3C/g%3E%3Cg fill='none' stroke='%23F4E9D6' stroke-width='2' opacity='0.34'%3E%3Cpath d='M430 350c0-12 14-18 24-10 10-8 24-2 24 10 0 18-24 26-24 40 0-14-24-22-24-40z'/%3E%3Cpath d='M160 260c0-10 12-15 20-8 8-7 20-2 20 8 0 15-20 22-20 34 0-12-20-19-20-34z'/%3E%3Cpath d='M760 210c0-10 12-15 20-8 8-7 20-2 20 8 0 15-20 22-20 34 0-12-20-19-20-34z'/%3E%3C/g%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 900px 700px;
+/* RSVP + MENU (cuori) */
+body.bg-rsvp::before,
+body.bg-menu::before{
+  background-image: url("assets/img/sfondo-rsvp-2.PNG");
+}
 
-  /* velo avorio */
-  background-color: rgba(244,233,214,0.14);
-  mix-blend-mode: multiply;
+/* VIAGGIO (francobollo) */
+body.bg-viaggio::before{
+  background-image: url("assets/img/sfondo-viaggio-2.jpeg");
 }
 
 /* --- Tipografia nomi (identico se carichi woff2) --- */
