@@ -17,7 +17,7 @@ body{
   font-family:"Cormorant Garamond", serif;
 }
 
-/* sfondo grafico */
+/* Sfondo grafico principale */
 body::before{
   content:"";
   position:fixed;
@@ -26,6 +26,25 @@ body::before{
   opacity:.55;
   pointer-events:none;
   z-index:-2;
+}
+
+/* Overlay “cartolina vintage” + velo avorio (UNICO body::after) */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+
+  /* pattern timbri + flight path + cuori */
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='700' viewBox='0 0 900 700'%3E%3Cg fill='none' stroke='%23F4E9D6' stroke-width='2' opacity='0.32'%3E%3Cpath d='M95 140c65-55 170-65 250-20 80 45 155 40 230-10 75-50 165-55 250 5' stroke-dasharray='7 10'/%3E%3Ccircle cx='335' cy='150' r='54'/%3E%3Ccircle cx='335' cy='150' r='38'/%3E%3Cpath d='M305 150h60M335 120v60'/%3E%3Ccircle cx='710' cy='525' r='58'/%3E%3Ccircle cx='710' cy='525' r='40'/%3E%3Cpath d='M675 525h70'/%3E%3C/g%3E%3Cg fill='none' stroke='%231f2f4a' stroke-width='2' opacity='0.10'%3E%3Cpath d='M135 520c120-140 250-170 365-95 115 75 215 55 300-15' stroke-dasharray='6 12'/%3E%3C/g%3E%3Cg fill='none' stroke='%23F4E9D6' stroke-width='2' opacity='0.34'%3E%3Cpath d='M430 350c0-12 14-18 24-10 10-8 24-2 24 10 0 18-24 26-24 40 0-14-24-22-24-40z'/%3E%3Cpath d='M160 260c0-10 12-15 20-8 8-7 20-2 20 8 0 15-20 22-20 34 0-12-20-19-20-34z'/%3E%3Cpath d='M760 210c0-10 12-15 20-8 8-7 20-2 20 8 0 15-20 22-20 34 0-12-20-19-20-34z'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 900px 700px;
+
+  /* velo avorio */
+  background-color: rgba(244,233,214,0.14);
+  mix-blend-mode: multiply;
 }
 
 /* --- Tipografia nomi (identico se carichi woff2) --- */
@@ -37,6 +56,7 @@ body::before{
   font-display:swap;
 }
 
+/* Layout */
 .page{
   min-height:100vh;
   display:flex;
@@ -51,10 +71,63 @@ body::before{
   margin-top:8px;
 }
 
+/* ===== NAV elegante, più leggibile ===== */
+.nav{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:14px;
+  margin:0 auto 14px;
+  padding:10px 0 14px;
+  width:min(720px, 100%);
+  border-bottom: 1px solid rgba(244,233,214,.85);
+}
+
+.nav__link{
+  text-decoration:none;
+  color: var(--muted);
+  font-weight:600;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  font-size:14px;
+  padding:8px 4px;
+}
+
+.nav__sep{
+  color: rgba(31,47,74,.32);
+  font-size:14px;
+}
+
+.nav__link.is-active{ color: var(--ink); }
+.nav__link:hover{ color: var(--ink); }
+
+/* ===== Monogramma + Cuori ===== */
+.marks{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+  margin:4px 0 10px;
+}
+
+.mono{
+  font-family:"Beautiful Delicious Script","Waterfall","Brush Script MT",cursive;
+  font-size:64px;
+  line-height:1;
+  color: var(--ivory);
+  opacity:.95;
+  letter-spacing:.04em;
+  text-shadow: 0 1px 0 rgba(0,0,0,.08);
+}
+
+.ampmark{
+  margin:0 6px;
+  font-size:0.78em;
+}
+
 .heart-mark{
   display:flex;
   justify-content:center;
-  margin:0 0 10px;
 }
 
 .heart-mark svg{
@@ -72,6 +145,7 @@ body::before{
   filter: drop-shadow(0 1px 0 rgba(0,0,0,.06));
 }
 
+/* Titoli */
 .names{
   font-family:"Beautiful Delicious Script","Waterfall","Brush Script MT",cursive;
   font-size:68px;
@@ -88,13 +162,13 @@ body::before{
   color:var(--ink);
   font-size:16px;
 }
-
 .surnames .dot{
   display:inline-block;
   margin:0 .6em;
   opacity:.6;
 }
 
+/* Card */
 .card{
   width:min(680px, 100%);
   text-align:center;
@@ -105,15 +179,8 @@ body::before{
   backdrop-filter: blur(2px);
 }
 
-.lead{
-  font-size:26px;
-  margin:0 0 6px;
-}
-
-.lead2{
-  font-size:22px;
-  margin:0 0 18px;
-}
+.lead{ font-size:26px; margin:0 0 6px; }
+.lead2{ font-size:22px; margin:0 0 18px; }
 
 .date{
   letter-spacing:0.18em;
@@ -138,7 +205,7 @@ body::before{
 .small{
   margin:0 0 12px;
   color:var(--muted);
-  font-size:16px;
+  font-size:18px;
 }
 
 /* ===== FORM ===== */
@@ -147,7 +214,7 @@ body::before{
 
 .label{
   display:block;
-  font-size:16px;
+  font-size:18px;
   margin:0 0 8px;
   font-weight:600;
   color:var(--ink);
@@ -160,7 +227,7 @@ body::before{
   border:1px solid var(--line);
   background: rgba(255,255,255,.88);
   font-family: inherit;
-  font-size:18px;
+  font-size:19px;
   outline:none;
   color:var(--ink);
 }
@@ -181,7 +248,7 @@ body::before{
   padding:12px 10px;
   text-align:center;
   cursor:pointer;
-  font-size:18px;
+  font-size:19px;
   color:var(--ink);
 }
 .seg input:checked + span{
@@ -210,7 +277,7 @@ button, .btn{ -webkit-appearance:none; appearance:none; }
   border-radius:12px;
   cursor:pointer;
   font-family: inherit;
-  font-size:16px;
+  font-size:17px;
   color:var(--ink) !important;
   -webkit-text-fill-color: var(--ink) !important;
 }
@@ -218,7 +285,7 @@ button, .btn{ -webkit-appearance:none; appearance:none; }
 .btn.primary{
   width:100%;
   padding:12px 14px;
-  font-size:18px;
+  font-size:19px;
   font-weight:700;
   background-color: rgba(255,255,255,.92) !important;
   border:1px solid rgba(31,47,74,.22) !important;
@@ -227,21 +294,20 @@ button, .btn{ -webkit-appearance:none; appearance:none; }
 }
 
 .btn.primary:disabled{ opacity:.7; }
-
 .btn.ghost{ padding:8px 10px; font-size:14px; }
 .btn.danger{ padding:10px 12px; font-size:14px; }
 
 .hint{
   margin:8px 0 0;
   color:var(--muted);
-  font-size:14px;
+  font-size:15px;
 }
 
 .check{
   display:flex;
   gap:10px;
   align-items:flex-start;
-  font-size:14px;
+  font-size:15px;
   color:var(--muted);
 }
 
@@ -263,222 +329,7 @@ button, .btn{ -webkit-appearance:none; appearance:none; }
   overflow:hidden;
 }
 
-/* Mobile */
-@media (max-width: 420px){
-  .names{ font-size:56px; }
-  .surnames{ font-size:14px; }
-  .lead{ font-size:22px; }
-  .lead2{ font-size:18px; }
-  .block{ font-size:20px; }
-  .date{ font-size:18px; }
-  .input, .seg span{ font-size:16px; }
-  .heart-mark svg{ width:155px; }
-}
-
-/* ===== NAV ===== */
-.topnav{
-  width:min(720px, 100%);
-  display:flex;
-  justify-content:center;
-  gap:16px;
-  padding:10px 12px;
-  margin:0 auto 14px;
-  border:1px solid var(--line);
-  border-radius:999px;
-  background: rgba(255,255,255,.55);
-  backdrop-filter: blur(2px);
-}
-
-.navlink{
-  text-decoration:none;
-  color:var(--ink);
-  font-weight:600;
-  letter-spacing:.06em;
-  text-transform:uppercase;
-  font-size:12px;
-  padding:8px 10px;
-  border-radius:999px;
-}
-.navlink:hover{
-  background: rgba(31,47,74,.08);
-}
-
-/* ===== MONOGRAM + CUORI ===== */
-.marks{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:10px;
-  margin:4px 0 10px;
-}
-
-.mono{
-  font-family:"Beautiful Delicious Script","Waterfall","Brush Script MT",cursive;
-  font-size:62px;
-  line-height:1;
-  color: var(--ivory);
-  opacity:.95;
-  letter-spacing:.04em;
-  text-shadow: 0 1px 0 rgba(0,0,0,.08);
-}
-
-.ampmark{
-  margin:0 6px;
-  font-size:0.78em;
-}
-
-/* già avevi heart-mark; qui la rendiamo un filo più “stampata” */
-.heart-mark svg{ width:180px; }
-.heart-mark path{
-  stroke: var(--ivory);
-  stroke-width:2.2;
-  opacity:.95;
-  filter: drop-shadow(0 1px 0 rgba(0,0,0,.06));
-}
-
-/* ===== FORM: testi più grandi ===== */
-.label{ font-size:18px; }           /* era 16 */
-.small{ font-size:18px; }           /* descrizione sotto “Conferma presenza” */
-.hint{ font-size:15px; }
-.check{ font-size:15px; }
-
-.input{ font-size:19px; }           /* era 18 */
-.seg span{ font-size:19px; }        /* era 18 */
-.btn{ font-size:17px; }
-.btn.primary{ font-size:19px; }
-
-/* Mobile */
-@media (max-width: 420px){
-  .label{ font-size:17px; }
-  .input, .seg span{ font-size:17px; }
-  .btn.primary{ font-size:18px; }
-
-  .mono{ font-size:54px; }
-  .heart-mark svg{ width:155px; }
-
-  .topnav{
-    gap:8px;
-    padding:8px 10px;
-  }
-  .navlink{
-    font-size:11px;
-    padding:7px 8px;
-  }
-}
-
-.mapWrap{
-  margin:14px 0 0;
-  border:1px solid var(--line);
-  border-radius:14px;
-  overflow:hidden;
-  background: rgba(255,255,255,.75);
-}
-.mapPlaceholder{
-  padding:28px 14px;
-  text-align:center;
-  color: var(--muted);
-  font-size:16px;
-}
-.mapWrap iframe{
-  width:100%;
-  height:380px;
-  border:0;
-  display:block;
-}
-@media (max-width: 420px){
-  .mapWrap iframe{ height:320px; }
-}
-
-/* ===== Monogramma in avorio (definitivo) ===== */
-.mono{
-  font-family:"Beautiful Delicious Script","Waterfall","Brush Script MT",cursive;
-  font-size:64px;
-  line-height:1;
-  color: var(--ivory);
-  opacity: .95;
-  letter-spacing: .04em;
-  text-shadow: 0 1px 0 rgba(0,0,0,.08);
-}
-
-.ampmark{
-  margin:0 6px;
-  font-size:0.78em;
-}
-
-/* Cuori in avorio */
-.heart-mark path{
-  fill:none;
-  stroke: var(--ivory);
-  stroke-width:2.2;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-  opacity:.95;
-  filter: drop-shadow(0 1px 0 rgba(0,0,0,.06));
-}
-
-/* Spaziatura blocco monogramma+cuori */
-.marks{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:10px;
-  margin:4px 0 10px;
-}
-
-/* Mobile */
-@media (max-width: 420px){
-  .mono{ font-size:54px; }
-  .heart-mark svg{ width:155px; }
-}
-
-/* ===== NAV elegante, più leggibile ===== */
-.nav{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:14px;
-  margin:0 auto 14px;
-  padding:10px 0 14px;
-  width:min(720px, 100%);
-  border-bottom: 1px solid rgba(244,233,214,.85); /* avorio */
-}
-
-.nav__link{
-  text-decoration:none;
-  color: var(--muted);
-  font-weight:600;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  font-size:14px;              /* ↑ era 12 */
-  padding:8px 4px;
-}
-
-.nav__sep{
-  color: rgba(31,47,74,.32);
-  font-size:14px;
-}
-
-.nav__link.is-active{
-  color: var(--ink);
-}
-
-.nav__link:hover{
-  color: var(--ink);
-}
-
-@media (max-width: 420px){
-  .nav{
-    gap:10px;
-    padding:10px 0 12px;
-  }
-  .nav__link{
-    font-size:13px;            /* ↑ era 11 */
-    letter-spacing:.06em;
-  }
-  .nav__sep{ font-size:13px; }
-}
-
-/* ===== MAPPA ===== */
+/* ===== MAPPA (cornice elegante + barra) ===== */
 .mapWrap{
   margin:16px 0 0;
   border:1px solid rgba(31,47,74,.16);
@@ -488,17 +339,6 @@ button, .btn{ -webkit-appearance:none; appearance:none; }
   box-shadow: 0 10px 30px rgba(31,47,74,.08);
 }
 
-.mapWrap iframe{
-  width:100%;
-  height:420px;
-  border:0;
-  display:block;
-  filter: saturate(.9) contrast(.98);
-}
-
-@media (max-width: 420px){
-  .mapWrap iframe{ height:340px; }
-}
 .mapBar{
   display:flex;
   justify-content:space-between;
@@ -527,6 +367,15 @@ button, .btn{ -webkit-appearance:none; appearance:none; }
   border-radius:999px;
   background: rgba(255,255,255,.65);
 }
+
+.mapWrap iframe{
+  width:100%;
+  height:420px;
+  border:0;
+  display:block;
+  filter: saturate(.9) contrast(.98);
+}
+
 /* ===== TIMELINE TAPPE ===== */
 .trip{
   margin:18px 0 0;
@@ -556,7 +405,7 @@ button, .btn{ -webkit-appearance:none; appearance:none; }
   border-radius:50%;
   margin-top:6px;
   border:1px solid rgba(31,47,74,.25);
-  background: rgba(244,233,214,.85); /* avorio */
+  background: rgba(244,233,214,.85);
   box-shadow: 0 1px 0 rgba(0,0,0,.06);
   flex:0 0 16px;
   position:relative;
@@ -580,35 +429,30 @@ button, .btn{ -webkit-appearance:none; appearance:none; }
   color: var(--muted);
 }
 
+/* ===== MOBILE ===== */
 @media (max-width: 420px){
+  .names{ font-size:56px; }
+  .surnames{ font-size:14px; }
+  .lead{ font-size:22px; }
+  .lead2{ font-size:18px; }
+  .block{ font-size:20px; }
+  .date{ font-size:18px; }
+
+  .mono{ font-size:54px; }
+  .heart-mark svg{ width:155px; }
+
+  .nav{
+    gap:10px;
+    padding:10px 0 12px;
+  }
+  .nav__link{
+    font-size:13px;
+    letter-spacing:.06em;
+  }
+  .nav__sep{ font-size:13px; }
+
+  .mapWrap iframe{ height:340px; }
+
   .stop__place{ font-size:18px; }
   .stop__meta{ font-size:15px; }
-}
-/* ===== SFONDO: cartolina vintage (overlay) ===== */
-body::after{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:-1;
-
-  /* Overlay con pattern SVG (timbri + flight path + cuori) */
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='700' viewBox='0 0 900 700'%3E%3Cg fill='none' stroke='%23F4E9D6' stroke-width='2' opacity='0.22'%3E%3Cpath d='M95 140c65-55 170-65 250-20 80 45 155 40 230-10 75-50 165-55 250 5' stroke-dasharray='7 10'/%3E%3Ccircle cx='335' cy='150' r='54'/%3E%3Ccircle cx='335' cy='150' r='38'/%3E%3Cpath d='M305 150h60M335 120v60'/%3E%3Ccircle cx='710' cy='525' r='58'/%3E%3Ccircle cx='710' cy='525' r='40'/%3E%3Cpath d='M675 525h70'/%3E%3C/g%3E%3Cg fill='none' stroke='%231f2f4a' stroke-width='2' opacity='0.07'%3E%3Cpath d='M135 520c120-140 250-170 365-95 115 75 215 55 300-15' stroke-dasharray='6 12'/%3E%3C/g%3E%3Cg fill='none' stroke='%23F4E9D6' stroke-width='2' opacity='0.25'%3E%3Cpath d='M430 350c0-12 14-18 24-10 10-8 24-2 24 10 0 18-24 26-24 40 0-14-24-22-24-40z'/%3E%3Cpath d='M160 260c0-10 12-15 20-8 8-7 20-2 20 8 0 15-20 22-20 34 0-12-20-19-20-34z'/%3E%3Cpath d='M760 210c0-10 12-15 20-8 8-7 20-2 20 8 0 15-20 22-20 34 0-12-20-19-20-34z'/%3E%3C/g%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 900px 700px;
-
-  /* Velo avorio */
-  background-color: rgba(244,233,214,0.10);
-  mix-blend-mode: multiply;
-}
-/* velo avorio leggero */
-body::after{
-  content:"";
-  position:fixed;
-  inset:0;
-  background: var(--ivory);
-  opacity:.10;
-  pointer-events:none;
-  z-index:-1;
 }
