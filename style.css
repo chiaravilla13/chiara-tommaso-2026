@@ -265,25 +265,32 @@ button, .btn{ -webkit-appearance:none; appearance:none; }
   .nav__link{ font-size:13px; letter-spacing:.06em; }
   .nav__sep{ font-size:13px; }
 }
-/* ===== FIX ALLINEAMENTI (forzato) ===== */
-.page{ align-items:center !important; }
+/* ===== FIX ALLINEAMENTI (definitivo) ===== */
+.page{
+  align-items: center !important;
+}
 
-.hero{ text-align:center !important; }
-.hero *{ text-align:center !important; }
+.hero,
+.hero *{
+  text-align: center !important;
+}
 
-.card{ text-align:center !important; margin-left:auto; margin-right:auto; }
-.card > *{ text-align:center; }
+.card{
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
 
+/* solo il form deve essere left */
 .card form,
 .card .form{
-  text-align:left !important;
+  text-align: left !important;
 }
 
-.card form *{
-  text-align:left;
-}
-
-/* però i bottoni/segmented restano centrati */
-.segmented, .seg span, .btn.primary, .status{
-  text-align:center !important;
+/* elementi del form che devono restare centrati */
+.segmented,
+.seg span,
+.btn.primary,
+.status{
+  text-align: center !important;
 }
