@@ -1,67 +1,14 @@
 :root{
-  /* palette partecipazione */
-  --ink:#1f2f4a;         /* blu testo */
-  --muted:#51627d;       /* blu/grigio */
+  --ink:#1f2f4a;
+  --muted:#51627d;
   --paper:#fbfbfb;
-  --ivory:#F4E9D6;       /* avorio decorazioni */
-  --card:rgba(255,255,255,.76);
+  --ivory:#F4E9D6;
+  --card:rgba(255,255,255,.78);
   --line:rgba(31,47,74,.16);
 }
 
 *{ box-sizing:border-box; }
 
-body{
-  margin:0;
-  color:var(--ink);
-  background: var(--paper);
-  font-family:"Cormorant Garamond", serif;
-}
-
-/* ===== SFONDI PAGINE ===== */
-/* NB: i nomi file sono case-sensitive: sfondo-rsvp-2.PNG è diverso da .png */
-
-body{
-  margin:0;
-  color:var(--ink);
-  background: var(--paper); /* fallback */
-  font-family:"Cormorant Garamond", serif;
-}
-
-/* strato immagine sfondo */
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background-position:center;
-  background-size:cover;
-  background-repeat:no-repeat;
-  opacity:1;              /* l'immagine è già “delicata”, quindi piena */
-  pointer-events:none;
-  z-index:-2;
-}
-
-/* velo leggero per armonizzare (opzionale ma consigliato) */
-body::after{
-  content:"";
-  position:fixed;
-  inset:0;
-  background: rgba(244,233,214,0.06);
-  pointer-events:none;
-  z-index:-1;
-}
-
-/* RSVP + MENU (cuori) */
-body.bg-rsvp::before,
-body.bg-menu::before{
-  background-image: url("assets/img/sfondo-rsvp-2.PNG");
-}
-
-/* VIAGGIO (francobollo) */
-body.bg-viaggio::before{
-  background-image: url("assets/img/sfondo-viaggio-2.jpeg");
-}
-
-/* --- Tipografia nomi (identico se carichi woff2) --- */
 @font-face{
   font-family:"Beautiful Delicious Script";
   src: url("assets/fonts/BeautifulDeliciousScript.woff2") format("woff2");
@@ -70,7 +17,42 @@ body.bg-viaggio::before{
   font-display:swap;
 }
 
-/* Layout */
+/* ===== BACKGROUND: gestito sul BODY (niente pseudo-elementi) ===== */
+body{
+  margin:0;
+  color:var(--ink);
+  font-family:"Cormorant Garamond", serif;
+  background-color: var(--paper);
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+}
+
+/* RSVP + MENU: non tagliare i cuori → contain + left */
+body.bg-rsvp,
+body.bg-menu{
+  background-image: url("assets/img/sfondo-rsvp-2.PNG"); /* case sensitive */
+  background-size: contain;              /* IMPORTANTISSIMO: non taglia */
+  background-position: left center;      /* cuori a sinistra */
+}
+
+/* VIAGGIO: la cartolina può andare in cover */
+body.bg-viaggio{
+  background-image: url("assets/img/sfondo-viaggio-2.jpeg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* Velo leggero (coerenza/leggibilità) */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background: rgba(244,233,214,0.06);
+  z-index:-1;
+}
+
+/* ===== LAYOUT ===== */
 .page{
   min-height:100vh;
   display:flex;
@@ -85,7 +67,7 @@ body.bg-viaggio::before{
   margin-top:8px;
 }
 
-/* ===== NAV elegante, più leggibile ===== */
+/* ===== NAV (più grande) ===== */
 .nav{
   display:flex;
   justify-content:center;
@@ -115,7 +97,7 @@ body.bg-viaggio::before{
 .nav__link.is-active{ color: var(--ink); }
 .nav__link:hover{ color: var(--ink); }
 
-/* ===== Monogramma + Cuori ===== */
+/* ===== MONOGRAM + CUORI (in avorio) ===== */
 .marks{
   display:flex;
   flex-direction:column;
@@ -134,21 +116,9 @@ body.bg-viaggio::before{
   text-shadow: 0 1px 0 rgba(0,0,0,.08);
 }
 
-.ampmark{
-  margin:0 6px;
-  font-size:0.78em;
-}
+.ampmark{ margin:0 6px; font-size:0.78em; }
 
-.heart-mark{
-  display:flex;
-  justify-content:center;
-}
-
-.heart-mark svg{
-  width:180px;
-  height:auto;
-}
-
+.heart-mark svg{ width:180px; height:auto; }
 .heart-mark path{
   fill:none;
   stroke: var(--ivory);
@@ -159,7 +129,7 @@ body.bg-viaggio::before{
   filter: drop-shadow(0 1px 0 rgba(0,0,0,.06));
 }
 
-/* Titoli */
+/* ===== TESTI HEADER ===== */
 .names{
   font-family:"Beautiful Delicious Script","Waterfall","Brush Script MT",cursive;
   font-size:68px;
@@ -176,16 +146,12 @@ body.bg-viaggio::before{
   color:var(--ink);
   font-size:16px;
 }
-.surnames .dot{
-  display:inline-block;
-  margin:0 .6em;
-  opacity:.6;
-}
+.surnames .dot{ margin:0 .6em; opacity:.6; }
 
-/* Card */
+/* ===== CARD: SEMPRE CENTRATA ===== */
 .card{
   width:min(680px, 100%);
-  text-align:center;
+  text-align:center;                 /* <- questo impedisce “tutto a sinistra” */
   padding:32px 22px;
   background: var(--card);
   border-radius:16px;
@@ -203,18 +169,10 @@ body.bg-viaggio::before{
   font-size:20px;
 }
 
-.block{
-  margin:18px 0 0;
-  font-size:22px;
-}
-
+.block{ margin:18px 0 0; font-size:22px; }
 .bold{ font-weight:600; }
 
-.title{
-  font-size:24px;
-  margin:0 0 8px;
-  font-weight:600;
-}
+.title{ font-size:24px; margin:0 0 8px; font-weight:600; }
 
 .small{
   margin:0 0 12px;
@@ -222,7 +180,7 @@ body.bg-viaggio::before{
   font-size:18px;
 }
 
-/* ===== FORM ===== */
+/* ===== FORM: SOLO LUI A SINISTRA ===== */
 .form{ text-align:left; margin-top:14px; }
 .row{ margin:14px 0; }
 
@@ -281,7 +239,7 @@ body.bg-viaggio::before{
 .personRow{ display:flex; gap:10px; align-items:center; }
 .personRow .input{ flex:1; }
 
-/* Bottoni (fix definitivo iOS/Android) */
+/* Bottoni: iOS/Android safe */
 button, .btn{ -webkit-appearance:none; appearance:none; }
 
 .btn{
@@ -303,47 +261,20 @@ button, .btn{ -webkit-appearance:none; appearance:none; }
   font-weight:700;
   background-color: rgba(255,255,255,.92) !important;
   border:1px solid rgba(31,47,74,.22) !important;
-  color:var(--ink) !important;
-  -webkit-text-fill-color: var(--ink) !important;
 }
 
 .btn.primary:disabled{ opacity:.7; }
 .btn.ghost{ padding:8px 10px; font-size:14px; }
 .btn.danger{ padding:10px 12px; font-size:14px; }
 
-.hint{
-  margin:8px 0 0;
-  color:var(--muted);
-  font-size:15px;
-}
+.hint{ margin:8px 0 0; color:var(--muted); font-size:15px; }
+.check{ display:flex; gap:10px; align-items:flex-start; font-size:15px; color:var(--muted); }
+.status{ margin:12px 0 0; text-align:center; font-size:16px; min-height:22px; color:var(--ink); }
 
-.check{
-  display:flex;
-  gap:10px;
-  align-items:flex-start;
-  font-size:15px;
-  color:var(--muted);
-}
+/* honeypot */
+.hp{ position:absolute; left:-10000px; width:1px; height:1px; overflow:hidden; }
 
-.status{
-  margin:12px 0 0;
-  text-align:center;
-  font-size:16px;
-  min-height:22px;
-  color:var(--ink);
-}
-
-/* honeypot invisibile */
-.hp{
-  position:absolute;
-  left:-10000px;
-  top:auto;
-  width:1px;
-  height:1px;
-  overflow:hidden;
-}
-
-/* ===== MAPPA (cornice elegante + barra) ===== */
+/* ===== MAPPA (se usata in viaggio.html) ===== */
 .mapWrap{
   margin:16px 0 0;
   border:1px solid rgba(31,47,74,.16);
@@ -352,7 +283,6 @@ button, .btn{ -webkit-appearance:none; appearance:none; }
   background: rgba(255,255,255,.72);
   box-shadow: 0 10px 30px rgba(31,47,74,.08);
 }
-
 .mapBar{
   display:flex;
   justify-content:space-between;
@@ -362,13 +292,11 @@ button, .btn{ -webkit-appearance:none; appearance:none; }
   color: var(--muted);
   font-size:14px;
 }
-
 .mapLabel{
   letter-spacing:.06em;
   text-transform:uppercase;
   font-weight:600;
 }
-
 .mapLink{
   text-decoration:none;
   color: var(--ink);
@@ -381,66 +309,12 @@ button, .btn{ -webkit-appearance:none; appearance:none; }
   border-radius:999px;
   background: rgba(255,255,255,.65);
 }
-
 .mapWrap iframe{
   width:100%;
   height:420px;
   border:0;
   display:block;
   filter: saturate(.9) contrast(.98);
-}
-
-/* ===== TIMELINE TAPPE ===== */
-.trip{
-  margin:18px 0 0;
-  padding:6px 0 0;
-}
-
-.stop{
-  position:relative;
-  display:flex;
-  gap:14px;
-  padding:10px 0 10px 2px;
-}
-
-.stop::before{
-  content:"";
-  position:absolute;
-  left:8px;
-  top:0;
-  bottom:0;
-  width:1px;
-  background: rgba(31,47,74,.18);
-}
-
-.stop__pin{
-  width:16px;
-  height:16px;
-  border-radius:50%;
-  margin-top:6px;
-  border:1px solid rgba(31,47,74,.25);
-  background: rgba(244,233,214,.85);
-  box-shadow: 0 1px 0 rgba(0,0,0,.06);
-  flex:0 0 16px;
-  position:relative;
-  z-index:1;
-}
-
-.stop__content{
-  flex:1;
-  padding-left:8px;
-}
-
-.stop__place{
-  margin:0;
-  font-size:20px;
-  color: var(--ink);
-}
-
-.stop__meta{
-  margin:4px 0 0;
-  font-size:16px;
-  color: var(--muted);
 }
 
 /* ===== MOBILE ===== */
@@ -455,18 +329,14 @@ button, .btn{ -webkit-appearance:none; appearance:none; }
   .mono{ font-size:54px; }
   .heart-mark svg{ width:155px; }
 
-  .nav{
-    gap:10px;
-    padding:10px 0 12px;
-  }
-  .nav__link{
-    font-size:13px;
-    letter-spacing:.06em;
-  }
+  .nav{ gap:10px; padding:10px 0 12px; }
+  .nav__link{ font-size:13px; letter-spacing:.06em; }
   .nav__sep{ font-size:13px; }
 
   .mapWrap iframe{ height:340px; }
 
-  .stop__place{ font-size:18px; }
-  .stop__meta{ font-size:15px; }
+  /* su mobile i cuori si devono vedere: evita che “contain” faccia troppo piccolo */
+  body.bg-rsvp, body.bg-menu{
+    background-position: left top;
+  }
 }
