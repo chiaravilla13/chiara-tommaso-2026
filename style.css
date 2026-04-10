@@ -33,6 +33,7 @@ body.bg-menu{
   background-image: url("assets/img/sfondo-rsvp-2.PNG"); /* case sensitive */
   background-size: contain;          /* IMPORTANTISSIMO: non taglia */
   background-position: left center;  /* cuori a sinistra */
+    background-repeat: no-repeat;
 }
 
 /* VIAGGIO: NEL TUO REPO È PNG (non jpeg) */
@@ -40,6 +41,7 @@ body.bg-viaggio{
   background-image: url("assets/img/sfondo-viaggio-2.PNG");
   background-size: cover;
   background-position: center;
+    background-repeat: no-repeat;
 }
 
 /* Velo leggero per uniformare e migliorare leggibilità */
