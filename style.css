@@ -28,17 +28,6 @@ body::before{
   z-index:-2;
 }
 
-/* velo avorio leggero */
-body::after{
-  content:"";
-  position:fixed;
-  inset:0;
-  background: var(--ivory);
-  opacity:.10;
-  pointer-events:none;
-  z-index:-1;
-}
-
 /* --- Tipografia nomi (identico se carichi woff2) --- */
 @font-face{
   font-family:"Beautiful Delicious Script";
@@ -594,4 +583,32 @@ button, .btn{ -webkit-appearance:none; appearance:none; }
 @media (max-width: 420px){
   .stop__place{ font-size:18px; }
   .stop__meta{ font-size:15px; }
+}
+/* ===== SFONDO: cartolina vintage (overlay) ===== */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+
+  /* Overlay con pattern SVG (timbri + flight path + cuori) */
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='700' viewBox='0 0 900 700'%3E%3Cg fill='none' stroke='%23F4E9D6' stroke-width='2' opacity='0.22'%3E%3Cpath d='M95 140c65-55 170-65 250-20 80 45 155 40 230-10 75-50 165-55 250 5' stroke-dasharray='7 10'/%3E%3Ccircle cx='335' cy='150' r='54'/%3E%3Ccircle cx='335' cy='150' r='38'/%3E%3Cpath d='M305 150h60M335 120v60'/%3E%3Ccircle cx='710' cy='525' r='58'/%3E%3Ccircle cx='710' cy='525' r='40'/%3E%3Cpath d='M675 525h70'/%3E%3C/g%3E%3Cg fill='none' stroke='%231f2f4a' stroke-width='2' opacity='0.07'%3E%3Cpath d='M135 520c120-140 250-170 365-95 115 75 215 55 300-15' stroke-dasharray='6 12'/%3E%3C/g%3E%3Cg fill='none' stroke='%23F4E9D6' stroke-width='2' opacity='0.25'%3E%3Cpath d='M430 350c0-12 14-18 24-10 10-8 24-2 24 10 0 18-24 26-24 40 0-14-24-22-24-40z'/%3E%3Cpath d='M160 260c0-10 12-15 20-8 8-7 20-2 20 8 0 15-20 22-20 34 0-12-20-19-20-34z'/%3E%3Cpath d='M760 210c0-10 12-15 20-8 8-7 20-2 20 8 0 15-20 22-20 34 0-12-20-19-20-34z'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 900px 700px;
+
+  /* Velo avorio */
+  background-color: rgba(244,233,214,0.10);
+  mix-blend-mode: multiply;
+}
+/* velo avorio leggero */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background: var(--ivory);
+  opacity:.10;
+  pointer-events:none;
+  z-index:-1;
 }
