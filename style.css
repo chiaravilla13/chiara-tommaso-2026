@@ -441,7 +441,7 @@ button, .btn{ -webkit-appearance:none; appearance:none; }
   .mono{ font-size:54px; }
   .heart-mark svg{ width:155px; }
 }
-/* ===== NAV minimale “partecipazione” ===== */
+
 /* ===== NAV elegante, più leggibile ===== */
 .nav{
   display:flex;
@@ -488,8 +488,8 @@ button, .btn{ -webkit-appearance:none; appearance:none; }
   }
   .nav__sep{ font-size:13px; }
 }
+
 /* ===== MAPPA ===== */
-/* ===== MAPPA più elegante ===== */
 .mapWrap{
   margin:16px 0 0;
   border:1px solid rgba(31,47,74,.16);
@@ -510,7 +510,34 @@ button, .btn{ -webkit-appearance:none; appearance:none; }
 @media (max-width: 420px){
   .mapWrap iframe{ height:340px; }
 }
+.mapBar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 14px;
+  border-bottom:1px solid rgba(31,47,74,.12);
+  color: var(--muted);
+  font-size:14px;
+}
 
+.mapLabel{
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  font-weight:600;
+}
+
+.mapLink{
+  text-decoration:none;
+  color: var(--ink);
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  font-size:13px;
+  padding:6px 10px;
+  border:1px solid rgba(31,47,74,.18);
+  border-radius:999px;
+  background: rgba(255,255,255,.65);
+}
 /* ===== TIMELINE TAPPE ===== */
 .trip{
   margin:18px 0 0;
