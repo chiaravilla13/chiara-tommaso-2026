@@ -9,7 +9,7 @@
 
 *{ box-sizing:border-box; }
 
-/* ===== FONT MARATRE (path corretto) ===== */
+/* ===== FONT MARATRE ===== */
 @font-face{
   font-family:"Maratre";
   src: url("assets/fonts/Maratre/Maratre.otf") format("opentype");
@@ -19,11 +19,24 @@
 }
 
 .maratre{
-  font-family:"Maratre","Cormorant Garamond",serif;
-  letter-spacing:.04em;
+  font-family:"Maratre","Cormorant Garamond",serif !important;
+  letter-spacing:.02em;
 }
 
-/* ===== BACKGROUND ROBUSTO ===== */
+/* Maratre: leggibilità (forzata) */
+.names.maratre{
+  font-size: clamp(42px, 4.6vw, 64px) !important;
+  line-height: 1.05 !important;
+}
+.title.maratre{
+  font-size: clamp(26px, 3.2vw, 36px) !important;
+}
+.block .maratre,
+.bold.maratre{
+  font-size: clamp(18px, 2.1vw, 24px) !important;
+}
+
+/* ===== BASE + BACKGROUND ===== */
 .page, .hero, .card{ position:relative; z-index:2; }
 
 body{
@@ -43,8 +56,8 @@ body::before{
   z-index:0;
   pointer-events:none;
   background-repeat:no-repeat;
-  background-position:left top;
-  background-size:cover; /* desktop: pagina piena */
+  background-position:center;
+  background-size:cover; /* full screen */
 }
 
 /* velo carta */
@@ -57,37 +70,43 @@ body::after{
   background: rgba(244,233,214,0.06);
 }
 
-/* RSVP + MENU: pagina piena, cuori a sinistra */
+/* RSVP + MENU (cuori) */
 body.bg-rsvp::before,
 body.bg-menu::before{
   background-image:url("assets/img/sfondo-rsvp-2.PNG");
   background-position:left top;
-  background-size:cover;
+  background-size:cover; /* full screen */
 }
 
-/* VIAGGIO: usare IMMAGINE “WEB WIDE” per evitare margini senza crop */
+/* VIAGGIO (desktop wide) */
 body.bg-viaggio::before{
-  background-image:url("assets/img/sfondo-viaggio-2.PNG");
-  background-position:center top;
-  background-size:contain; /* no crop (ma avrà margini se l’immagine è verticale) */
+  background-image:url("assets/img/sfondo-viaggio-webp.png");
+  background-position:center;
+  background-size:cover; /* full screen */
 }
 
-/* Mobile: preserva i cuori e evita glitch iOS */
+/* Mobile: usa versioni portrait per evitare crop “brutto” */
 @media (max-width: 820px), (orientation: portrait){
   body::before, body::after{ position:absolute; }
 
   body.bg-rsvp::before,
   body.bg-menu::before{
-    background-size:contain;      /* mobile: niente tagli ai cuori */
-    background-position:left top;
+    background-image:url("assets/img/sfondo-rsvp-2.PNG");
+    background-position:center;
+    background-size:cover;
   }
 
-body.bg-viaggio::before{
-  background-image:url("assets/img/sfondo-viaggio-web-2560x1440-nocrop.png");
-  background-size:cover;          /* riempie tutto */
-  background-position:center;     /* e non croppa perché è già no-crop */
+  body.bg-viaggio::before{
+    background-image:url("assets/img/sfondo-viaggio-mobile.png");
+    background-position:center;
+    background-size:cover;
   }
+
+  .names.maratre{ font-size: 44px !important; }
+  .title.maratre{ font-size: 28px !important; }
+  .block .maratre, .bold.maratre{ font-size: 19px !important; }
 }
+
 /* ===== LAYOUT ===== */
 .page{
   min-height:100vh;
@@ -98,12 +117,8 @@ body.bg-viaggio::before{
   gap:22px;
 }
 
-.hero{
-  text-align:center;
-  margin-top:8px;
-}
+.hero{ text-align:center; margin-top:8px; }
 
-/* ===== NAV (più grande, leggibile) ===== */
 .nav{
   display:flex;
   justify-content:center;
@@ -114,7 +129,6 @@ body.bg-viaggio::before{
   width:min(720px, 100%);
   border-bottom: 1px solid rgba(244,233,214,.85);
 }
-
 .nav__link{
   text-decoration:none;
   color: var(--muted);
@@ -124,24 +138,14 @@ body.bg-viaggio::before{
   font-size:14px;
   padding:8px 4px;
 }
-
-.nav__sep{
-  color: rgba(31,47,74,.32);
-  font-size:14px;
-}
-
+.nav__sep{ color: rgba(31,47,74,.32); font-size:14px; }
 .nav__link.is-active{ color: var(--ink); }
 .nav__link:hover{ color: var(--ink); }
 
-/* ===== TESTI HEADER ===== */
 .names{
-  font-family:"Beautiful Delicious Script","Waterfall","Brush Script MT",cursive;
-  font-size:68px;
-  line-height:1.0;
   margin:0;
   color:var(--ink);
 }
-
 .surnames{
   margin:10px 0 0;
   letter-spacing:.18em;
@@ -152,7 +156,6 @@ body.bg-viaggio::before{
 }
 .surnames .dot{ margin:0 .6em; opacity:.6; }
 
-/* ===== CARD: SEMPRE CENTRATA ===== */
 .card{
   width:min(680px, 100%);
   text-align:center;
@@ -165,87 +168,44 @@ body.bg-viaggio::before{
 
 .lead{ font-size:26px; margin:0 0 6px; }
 .lead2{ font-size:22px; margin:0 0 18px; }
-
 .date{
   letter-spacing:0.18em;
   font-weight:600;
   margin:0 0 26px;
   font-size:20px;
 }
-
 .block{ margin:18px 0 0; font-size:22px; }
 .bold{ font-weight:600; }
-
 .title{ font-size:24px; margin:0 0 8px; font-weight:600; }
+.small{ margin:0 0 12px; color:var(--muted); font-size:18px; }
 
-.small{
-  margin:0 0 12px;
-  color:var(--muted);
-  font-size:18px;
-}
-
-/* ===== FORM (solo lui a sinistra) ===== */
+/* FORM */
 .form{ text-align:left; margin-top:14px; }
 .row{ margin:14px 0; }
-
-.label{
-  display:block;
-  font-size:18px;
-  margin:0 0 8px;
-  font-weight:600;
-  color:var(--ink);
-}
-
+.label{ display:block; font-size:18px; margin:0 0 8px; font-weight:600; color:var(--ink); }
 .input{
   width:100%;
-  padding:12px 12px;
+  padding:12px;
   border-radius:12px;
   border:1px solid var(--line);
   background: rgba(255,255,255,.88);
   font-family: inherit;
   font-size:19px;
+  color:var(--ink);
   outline:none;
-  color:var(--ink);
 }
-
-.textarea{ resize: vertical; }
-
+.textarea{ resize:vertical; }
 .segmented{ display:flex; gap:10px; }
-.seg{
-  flex:1;
-  border:1px solid var(--line);
-  border-radius:12px;
-  overflow:hidden;
-  background: rgba(255,255,255,.75);
-}
+.seg{ flex:1; border:1px solid var(--line); border-radius:12px; overflow:hidden; background: rgba(255,255,255,.75); }
 .seg input{ display:none; }
-.seg span{
-  display:block;
-  padding:12px 10px;
-  text-align:center;
-  cursor:pointer;
-  font-size:19px;
-  color:var(--ink);
-}
-.seg input:checked + span{
-  background: rgba(31,47,74,.08);
-  font-weight:700;
-}
-
-.between{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-}
-
+.seg span{ display:block; padding:12px 10px; text-align:center; cursor:pointer; font-size:19px; }
+.seg input:checked + span{ background: rgba(31,47,74,.08); font-weight:700; }
+.between{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
 .people{ display:flex; flex-direction:column; gap:10px; }
 .personRow{ display:flex; gap:10px; align-items:center; }
 .personRow .input{ flex:1; }
 
-/* Bottoni: iOS/Android safe */
 button, .btn{ -webkit-appearance:none; appearance:none; }
-
 .btn{
   border:1px solid var(--line);
   background: rgba(255,255,255,.78);
@@ -257,7 +217,6 @@ button, .btn{ -webkit-appearance:none; appearance:none; }
   color:var(--ink) !important;
   -webkit-text-fill-color: var(--ink) !important;
 }
-
 .btn.primary{
   width:100%;
   padding:12px 14px;
@@ -266,205 +225,51 @@ button, .btn{ -webkit-appearance:none; appearance:none; }
   background-color: rgba(255,255,255,.92) !important;
   border:1px solid rgba(31,47,74,.22) !important;
 }
-
 .btn.primary:disabled{ opacity:.7; }
 .btn.ghost{ padding:8px 10px; font-size:14px; }
 .btn.danger{ padding:10px 12px; font-size:14px; }
-
 .hint{ margin:8px 0 0; color:var(--muted); font-size:15px; }
 .check{ display:flex; gap:10px; align-items:flex-start; font-size:15px; color:var(--muted); }
-.status{ margin:12px 0 0; text-align:center; font-size:16px; min-height:22px; color:var(--ink); }
+.status{ margin:12px 0 0; text-align:center; font-size:16px; min-height:22px; }
 
-/* honeypot */
-.hp{ position:absolute; left:-10000px; width:1px; height:1px; overflow:hidden; }
+/* MAP */
+.mapWrap{
+  margin:16px 0 0;
+  border:1px solid rgba(31,47,74,.16);
+  border-radius:18px;
+  overflow:hidden;
+  background: rgba(255,255,255,.72);
+  box-shadow: 0 10px 30px rgba(31,47,74,.08);
+}
+.mapBar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 14px;
+  border-bottom:1px solid rgba(31,47,74,.12);
+  color: var(--muted);
+  font-size:14px;
+}
+.mapLabel{ letter-spacing:.06em; text-transform:uppercase; font-weight:600; }
+.mapLink{
+  text-decoration:none;
+  color: var(--ink);
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  font-size:13px;
+  padding:6px 10px;
+  border:1px solid rgba(31,47,74,.18);
+  border-radius:999px;
+  background: rgba(255,255,255,.65);
+}
+.mapWrap iframe{ width:100%; height:420px; border:0; display:block; }
 
-/* ===== MOBILE ===== */
+/* MOBILE */
 @media (max-width: 420px){
-  .names{ font-size:56px; }
-  .surnames{ font-size:14px; }
   .lead{ font-size:22px; }
   .lead2{ font-size:18px; }
   .block{ font-size:20px; }
   .date{ font-size:18px; }
-
-  /* per far vedere bene i cuori */
-  body.bg-rsvp, body.bg-menu{
-    background-position: left top;
-  }
-
-  .nav{ gap:10px; padding:10px 0 12px; }
-  .nav__link{ font-size:13px; letter-spacing:.06em; }
-  .nav__sep{ font-size:13px; }
-}
-/* ===== FIX ALLINEAMENTI (definitivo) ===== */
-.page{
-  align-items: center !important;
-}
-
-.hero,
-.hero *{
-  text-align: center !important;
-}
-
-.card{
-  text-align: center !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-
-/* solo il form deve essere left */
-.card form,
-.card .form{
-  text-align: left !important;
-}
-
-/* elementi del form che devono restare centrati */
-.segmented,
-.seg span,
-.btn.primary,
-.status{
-  text-align: center !important;
-}
-/* Maratre: leggibilità (solo dove lo applichi) */
-.maratre{
-  font-family:"Maratre","Cormorant Garamond",serif;
-  letter-spacing: .03em;
-}
-
-/* Titoli / elementi chiave in Maratre */
-.names.maratre{
-  font-size: clamp(34px, 4.2vw, 54px);
-  line-height: 1.05;
-}
-
-.date.maratre{
-  font-size: clamp(18px, 2.2vw, 24px);
-}
-
-.block .maratre,
-.bold.maratre{
-  font-size: clamp(18px, 2.1vw, 22px);
-}
-
-.title.maratre{
-  font-size: clamp(22px, 3vw, 30px);
-}
-
-body.bg-viaggio{
-  background-image: url("assets/img/sfondo-viaggio-web.png");
-  background-size: cover;      /* pagina piena */
-  background-position: center; /* non taglia perché l’immagine è già “safe” */
-  background-repeat: no-repeat;
-}
-
-/* mobile: tieni la versione mobile che ti piace già */
-@media (max-width: 820px), (orientation: portrait){
-  body.bg-viaggio{
-    background-image: url("assets/img/sfondo-viaggio-2-mobile.PNG");
-    background-size: cover;
-    background-position: center;
-  }
-}
-/* ===== VIAGGIO: full page (desktop + mobile) ===== */
-body.bg-viaggio::before{
-  background-image: url("assets/img/sfondo-viaggio-web.png");
-  background-size: cover;         /* riempie tutto */
-  background-position: center;    /* niente bande */
-  background-repeat: no-repeat;
-}
-
-/* mobile: usa la versione verticale */
-@media (max-width: 820px), (orientation: portrait){
-  body.bg-viaggio::before{
-    background-image: url("assets/img/sfondo-viaggio-mobile.png");
-    background-size: cover;
-    background-position: center;
-  }
-}
-
-/* ===== MARATRE: leggibilità (forzato) ===== */
-.maratre{
-  font-family:"Maratre","Cormorant Garamond",serif !important;
-  letter-spacing: .02em;
-}
-
-/* dimensioni leggibili */
-.names.maratre{
-  font-size: clamp(40px, 4.2vw, 58px) !important;
-  line-height: 1.05 !important;
-}
-
-.date.maratre{
-  font-size: clamp(20px, 2.2vw, 28px) !important;
-  letter-spacing: .14em !important;
-}
-
-.title.maratre{
-  font-size: clamp(26px, 3vw, 34px) !important;
-}
-
-.bold.maratre,
-.block .maratre{
-  font-size: clamp(18px, 2vw, 24px) !important;
-}
-
-/* ===== FIX SFONDO VIAGGIO (fallback robusto) ===== */
-/* 1) background diretto sul body */
-body.bg-viaggio{
-  background-color: var(--paper);
-  background-image: url("assets/img/sfondo-viaggio-web.png"); /* <-- NOME ESATTO */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-/* 2) se usi anche ::before, forziamo anche lì */
-body.bg-viaggio::before{
-  background-image: url("assets/img/sfondo-viaggio-web.png"); /* <-- STESSO NOME */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-/* mobile */
-@media (max-width: 820px), (orientation: portrait){
-  body.bg-viaggio{
-    background-image: url("assets/img/sfondo-viaggio-mobile.png"); /* <-- NOME ESATTO */
-    background-size: cover;
-    background-position: center;
-  }
-  body.bg-viaggio::before{
-    background-image: url("assets/img/sfondo-viaggio-mobile.png"); /* <-- STESSO NOME */
-    background-size: cover;
-    background-position: center;
-  }
-}
-/* ===== MARATRE LEGGIBILE (FORZATO) ===== */
-.maratre{
-  font-family:"Maratre","Cormorant Garamond",serif !important;
-  letter-spacing: .02em !important;
-}
-
-/* nomi in alto */
-.names.maratre{
-  font-size: clamp(42px, 4.5vw, 62px) !important;
-  line-height: 1.05 !important;
-}
-
-/* titoli tipo "Il menù" */
-.title.maratre{
-  font-size: clamp(26px, 3.2vw, 36px) !important;
-}
-
-/* testi in maratre dentro ai blocchi (ore, villa, ecc.) */
-.block .maratre,
-.bold.maratre{
-  font-size: clamp(18px, 2.1vw, 24px) !important;
-}
-
-/* su mobile: non troppo “mini” */
-@media (max-width: 420px){
-  .names.maratre{ font-size: 44px !important; }
-  .title.maratre{ font-size: 28px !important; }
-  .block .maratre, .bold.maratre{ font-size: 19px !important; }
+  .mapWrap iframe{ height:340px; }
 }
