@@ -68,9 +68,8 @@ body.bg-menu::before{
 
 /* VIAGGIO (francobollo) — nel repo è PNG */
 body.bg-viaggio::before{
-  background-image: url("assets/img/sfondo-viaggio-2.PNG");
+  background-size: min(1800px, 100vw) auto;  /* aumenta la presenza */
   background-position: center top;
-  background-size: contain;           /* viaggio: non taglia mai */
 }
 
 /* Mobile: evita glitch iOS e preserva i cuori */
