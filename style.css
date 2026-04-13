@@ -332,3 +332,51 @@ body.bg-viaggio::before{
   .title.maratre{ font-size: 30px !important; }
   .block .maratre, .bold.maratre{ font-size: 20px !important; }
 }
+
+/* ===== RSVP+MENU MOBILE: stessa posizione e stessa immagine ===== */
+@media (max-width: 820px), (orientation: portrait){
+  body.bg-rsvp::before,
+  body.bg-menu::before{
+    background-image: url("assets/img/sfondo-rsvp-mobile.png") !important;
+    background-size: cover !important;
+    background-position: left top !important; /* identico per entrambe */
+    background-repeat: no-repeat !important;
+  }
+}
+/* ===== CARD più trasparenti ===== */
+.card{
+  background: rgba(255,255,255,0.62) !important; /* prima era ~0.78 */
+  backdrop-filter: blur(1.5px) !important;
+  -webkit-backdrop-filter: blur(1.5px) !important;
+}
+/* ===== VIAGGIO: FORZATURA SFONDO (desktop + mobile) ===== */
+
+/* desktop */
+body.bg-viaggio{
+  background-image: url("assets/img/sfondo-viaggio-webp.png") !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+body.bg-viaggio::before{
+  background-image: url("assets/img/sfondo-viaggio-webp.png") !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+/* mobile */
+@media (max-width: 820px), (orientation: portrait){
+  body.bg-viaggio{
+    background-image: url("assets/img/sfondo-viaggio-mobile.png") !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+  }
+  body.bg-viaggio::before{
+    background-image: url("assets/img/sfondo-viaggio-mobile.png") !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+  }
+}
