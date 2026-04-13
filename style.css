@@ -407,3 +407,35 @@ body.bg-viaggio::before{
 .block .maratre{
   font-size: clamp(18px, 2vw, 24px) !important;
 }
+
+/* ===== FIX SFONDO VIAGGIO (fallback robusto) ===== */
+/* 1) background diretto sul body */
+body.bg-viaggio{
+  background-color: var(--paper);
+  background-image: url("assets/img/sfondo-viaggio-web.png"); /* <-- NOME ESATTO */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* 2) se usi anche ::before, forziamo anche lì */
+body.bg-viaggio::before{
+  background-image: url("assets/img/sfondo-viaggio-web.png"); /* <-- STESSO NOME */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* mobile */
+@media (max-width: 820px), (orientation: portrait){
+  body.bg-viaggio{
+    background-image: url("assets/img/sfondo-viaggio-mobile.png"); /* <-- NOME ESATTO */
+    background-size: cover;
+    background-position: center;
+  }
+  body.bg-viaggio::before{
+    background-image: url("assets/img/sfondo-viaggio-mobile.png"); /* <-- STESSO NOME */
+    background-size: cover;
+    background-position: center;
+  }
+}
