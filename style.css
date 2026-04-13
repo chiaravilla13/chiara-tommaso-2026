@@ -325,3 +325,27 @@ button, .btn{ -webkit-appearance:none; appearance:none; }
 .status{
   text-align: center !important;
 }
+/* Maratre: leggibilità (solo dove lo applichi) */
+.maratre{
+  font-family:"Maratre","Cormorant Garamond",serif;
+  letter-spacing: .03em;
+}
+
+/* Titoli / elementi chiave in Maratre */
+.names.maratre{
+  font-size: clamp(34px, 4.2vw, 54px);
+  line-height: 1.05;
+}
+
+.date.maratre{
+  font-size: clamp(18px, 2.2vw, 24px);
+}
+
+.block .maratre,
+.bold.maratre{
+  font-size: clamp(18px, 2.1vw, 22px);
+}
+
+.title.maratre{
+  font-size: clamp(22px, 3vw, 30px);
+}
