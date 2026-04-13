@@ -396,3 +396,20 @@ body.bg-viaggio::before{
   background-image: url("assets/img/sfondo-viaggio-webp.png") !important;
 }
 }
+
+/* VIAGGIO: nessun taglio elementi */
+body.bg-viaggio::before{
+  background-size: contain !important;      /* non taglia */
+  background-position: center top !important; /* protegge l'alto */
+  background-repeat: no-repeat !important;
+  background-color: #f6efe6;               /* carta (fallback) */
+}
+@media (min-height: 850px){
+  body.bg-viaggio::before{
+    background-position: center center !important; /* fa respirare sopra/sotto */
+  }
+}
+body.bg-viaggio::before{
+  background-size: min(1800px, 100vw) auto !important;
+  background-position: center top !important;
+}
