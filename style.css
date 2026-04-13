@@ -273,3 +273,20 @@ button, .btn{ -webkit-appearance:none; appearance:none; }
   .date{ font-size:18px; }
   .mapWrap iframe{ height:340px; }
 }
+
+/* ===== FIX ALLINEAMENTO CARD (definitivo) ===== */
+.page{
+  align-items: center !important;
+}
+
+.card{
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
+
+/* solo il form deve stare a sinistra */
+.card form,
+.card .form{
+  text-align: left !important;
+}
