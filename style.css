@@ -439,3 +439,32 @@ body.bg-viaggio::before{
     background-position: center;
   }
 }
+/* ===== MARATRE LEGGIBILE (FORZATO) ===== */
+.maratre{
+  font-family:"Maratre","Cormorant Garamond",serif !important;
+  letter-spacing: .02em !important;
+}
+
+/* nomi in alto */
+.names.maratre{
+  font-size: clamp(42px, 4.5vw, 62px) !important;
+  line-height: 1.05 !important;
+}
+
+/* titoli tipo "Il menù" */
+.title.maratre{
+  font-size: clamp(26px, 3.2vw, 36px) !important;
+}
+
+/* testi in maratre dentro ai blocchi (ore, villa, ecc.) */
+.block .maratre,
+.bold.maratre{
+  font-size: clamp(18px, 2.1vw, 24px) !important;
+}
+
+/* su mobile: non troppo “mini” */
+@media (max-width: 420px){
+  .names.maratre{ font-size: 44px !important; }
+  .title.maratre{ font-size: 28px !important; }
+  .block .maratre, .bold.maratre{ font-size: 19px !important; }
+}
