@@ -392,7 +392,7 @@ body.bg-viaggio::before{
   }
 
   /* se esiste un ::before che “copre”, lo spegniamo */
-  body.bg-viaggio::before{
-    background-image: none !important;
-  }
+ body.bg-viaggio::before{
+  background-image: url("assets/img/sfondo-viaggio-webp.png") !important;
+}
 }
