@@ -290,3 +290,19 @@ button, .btn{ -webkit-appearance:none; appearance:none; }
 .card .form{
   text-align: left !important;
 }
+
+/* ===== VIAGGIO: SFONDO (nome file corretto) ===== */
+body.bg-viaggio::before{
+  background-image: url("assets/img/sfondo-viaggio-webp.png") !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+@media (max-width: 820px), (orientation: portrait){
+  body.bg-viaggio::before{
+    background-image: url("assets/img/sfondo-viaggio-mobile.png") !important;
+    background-size: cover !important;
+    background-position: center !important;
+  }
+}
