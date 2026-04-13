@@ -380,3 +380,19 @@ body.bg-viaggio::before{
     background-repeat: no-repeat !important;
   }
 }
+
+/* ===== VIAGGIO DESKTOP: forza sfondo sul BODY (no dipendenza da ::before) ===== */
+@media (min-width: 821px){
+  body.bg-viaggio{
+    background-image: url("assets/img/sfondo-viaggio-webp.png") !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-attachment: scroll !important;
+  }
+
+  /* se esiste un ::before che “copre”, lo spegniamo */
+  body.bg-viaggio::before{
+    background-image: none !important;
+  }
+}
