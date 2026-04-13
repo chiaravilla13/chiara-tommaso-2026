@@ -19,13 +19,14 @@
 
 /* ===== BACKGROUND ROBUSTO (non può “sparire”) ===== */
 
-/* il contenuto deve stare sopra */
+/* ===== BACKGROUND ROBUSTO (corretto) ===== */
+
+/* contenuto sopra */
 .page, .hero, .card{
   position: relative;
   z-index: 2;
 }
 
-/* base */
 body{
   margin:0;
   color:var(--ink);
@@ -35,7 +36,7 @@ body{
   overflow-x: hidden;
 }
 
-/* layer immagine */
+/* layer immagine: usato per TUTTE le pagine */
 body::before{
   content:"";
   position: fixed;
@@ -45,10 +46,10 @@ body::before{
 
   background-repeat: no-repeat;
   background-position: left center;
-  background-size: contain;
+  background-size: cover;   /* desktop: riempi lo schermo */
 }
 
-/* velo avorio leggerissimo */
+/* velo carta */
 body::after{
   content:"";
   position: fixed;
@@ -58,31 +59,35 @@ body::after{
   background: rgba(244,233,214,0.06);
 }
 
-/* RSVP + MENU = cuori */
+/* RSVP + MENU (cuori) */
 body.bg-rsvp::before,
 body.bg-menu::before{
   background-image: url("assets/img/sfondo-rsvp-2.PNG");
+  background-position: left center;
 }
 
-/* VIAGGIO = francobollo */
-body.bg-viaggio{
-  background-image: url("assets/img/sfondo-viaggio-2.jpeg"); /* o .PNG: usa il nome reale */
-  background-repeat: no-repeat;
-
-  /* IMPORTANTISSIMO: evita tagli */
-  background-size: contain;
+/* VIAGGIO (francobollo) — nel repo è PNG */
+body.bg-viaggio::before{
+  background-image: url("assets/img/sfondo-viaggio-2.PNG");
   background-position: center top;
-
-  /* riempie gli spazi laterali/sotto con “carta” */
-  background-color: #f6efe6; /* se vuoi lo regoliamo sul colore esatto */
-  
-  /* evita glitch su Safari */
-  background-attachment: scroll;
+  background-size: contain;           /* viaggio: non taglia mai */
 }
 
-/* iOS/mobile: niente fixed (glitch frequenti) */
+/* Mobile: evita glitch iOS e preserva i cuori */
 @media (max-width: 820px){
   body::before, body::after{ position: absolute; }
+
+  /* su mobile preferisci vedere i cuori interi */
+  body.bg-rsvp::before,
+  body.bg-menu::before{
+    background-size: contain;
+    background-position: left top;
+  }
+
+  /* viaggio: già contain */
+  body.bg-viaggio::before{
+    background-position: center top;
+  }
 }
 /* ===== LAYOUT ===== */
 .page{
