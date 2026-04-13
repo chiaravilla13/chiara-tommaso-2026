@@ -413,3 +413,13 @@ body.bg-viaggio::before{
   background-size: min(1800px, 100vw) auto !important;
   background-position: center top !important;
 }
+
+/* Viaggio: desktop */
+@media (min-width: 821px){
+  body.bg-viaggio::before{
+    background-image: url("assets/img/sfondo-viaggio-desktop.png") !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+  }
+}
