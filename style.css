@@ -8,20 +8,23 @@
 }
 
 *{ box-sizing:border-box; }
+}
 
 @font-face{
-  font-family:"Beautiful Delicious Script";
-  src: url("assets/fonts/BeautifulDeliciousScript.woff2") format("woff2");
+  font-family:"Maratre";
+  src: url("assets/fonts/Maratre.otf") format("opentype");
   font-weight:400;
   font-style:normal;
   font-display:swap;
 }
 
-/* ===== BACKGROUND ROBUSTO (non può “sparire”) ===== */
+.maratre{
+  font-family:"Maratre","Cormorant Garamond",serif;
+  letter-spacing: .04em;
+}
 
-/* ===== BACKGROUND ROBUSTO (corretto) ===== */
+/* ===== BACKGROUND ROBUSTO (definitivo) ===== */
 
-/* contenuto sopra */
 .page, .hero, .card{
   position: relative;
   z-index: 2;
@@ -36,7 +39,7 @@ body{
   overflow-x: hidden;
 }
 
-/* layer immagine: usato per TUTTE le pagine */
+/* layer immagine */
 body::before{
   content:"";
   position: fixed;
@@ -45,11 +48,11 @@ body::before{
   pointer-events: none;
 
   background-repeat: no-repeat;
-  background-position: left center;
-  background-size: cover;   /* desktop: riempi lo schermo */
+  background-position: left top;
+  background-size: contain; /* no-crop */
 }
 
-/* velo carta */
+/* velo carta leggero */
 body::after{
   content:"";
   position: fixed;
@@ -59,33 +62,29 @@ body::after{
   background: rgba(244,233,214,0.06);
 }
 
-/* RSVP + MENU (cuori) */
+/* RSVP + MENU */
 body.bg-rsvp::before,
 body.bg-menu::before{
   background-image: url("assets/img/sfondo-rsvp-2.PNG");
-  background-position: left center;
+  background-position: left top;
+  background-size: contain;
 }
 
-/* VIAGGIO (francobollo) — nel repo è PNG */
+/* VIAGGIO (DESKTOP) */
 body.bg-viaggio::before{
-  background-size: min(1800px, 100vw) auto;  /* aumenta la presenza */
+  background-image: url("assets/img/sfondo-viaggio-2.PNG"); /* <-- dopo la rinomina */
   background-position: center top;
+  background-size: contain;   /* niente crop: aereo+francobollo+skyline interi */
 }
 
-/* Mobile: evita glitch iOS e preserva i cuori */
-@media (max-width: 820px){
+/* Mobile: usa l'immagine mobile dedicata */
+@media (max-width: 820px), (orientation: portrait){
   body::before, body::after{ position: absolute; }
 
-  /* su mobile preferisci vedere i cuori interi */
-  body.bg-rsvp::before,
-  body.bg-menu::before{
-    background-size: contain;
-    background-position: left top;
-  }
-
-  /* viaggio: già contain */
   body.bg-viaggio::before{
+    background-image: url("assets/img/sfondo-viaggio-2-mobile.PNG");
     background-position: center top;
+    background-size: contain;
   }
 }
 /* ===== LAYOUT ===== */
