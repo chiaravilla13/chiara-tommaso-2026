@@ -306,3 +306,29 @@ body.bg-viaggio::before{
     background-position: center !important;
   }
 }
+
+/* ===== MARATRE LEGGIBILE (forzato) ===== */
+.maratre{
+  font-family:"Maratre","Cormorant Garamond",serif !important;
+  letter-spacing: .02em !important;
+}
+
+.names.maratre{
+  font-size: clamp(44px, 4.8vw, 66px) !important;
+  line-height: 1.05 !important;
+}
+
+.title.maratre{
+  font-size: clamp(28px, 3.4vw, 38px) !important;
+}
+
+.block .maratre,
+.bold.maratre{
+  font-size: clamp(19px, 2.2vw, 25px) !important;
+}
+
+@media (max-width: 420px){
+  .names.maratre{ font-size: 46px !important; }
+  .title.maratre{ font-size: 30px !important; }
+  .block .maratre, .bold.maratre{ font-size: 20px !important; }
+}
