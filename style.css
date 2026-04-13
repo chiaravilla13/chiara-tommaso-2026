@@ -459,3 +459,27 @@ body.bg-viaggio::after{
     background-attachment: scroll !important;
   }
 }
+
+/* ===== Maratre: +3px ovunque venga usato ===== */
+.maratre{
+  font-size: calc(1em + 3px) !important;
+  line-height: 1.2 !important;
+  letter-spacing: .02em !important;
+}
+
+/* titoli/nomi: un filo più “autorevoli” */
+.names.maratre{
+  font-size: calc(1em + 10px) !important;
+  line-height: 1.05 !important;
+}
+
+.title.maratre{
+  font-size: calc(1em + 6px) !important;
+}
+
+/* mobile: evita che diventi enorme, ma resta +3px */
+@media (max-width: 420px){
+  .maratre{ font-size: calc(1em + 2px) !important; }
+  .names.maratre{ font-size: calc(1em + 8px) !important; }
+  .title.maratre{ font-size: calc(1em + 5px) !important; }
+}
