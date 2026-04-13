@@ -423,3 +423,39 @@ body.bg-viaggio::before{
     background-repeat: no-repeat !important;
   }
 }
+
+
+
+
+
+/* ===============================
+   VIAGGIO: SFONDO STABILE (NO pseudo-layer)
+   =============================== */
+
+/* Spegne eventuali sfondi su pseudo-elementi che possono rompere desktop/mobile */
+body.bg-viaggio::before,
+body.bg-viaggio::after{
+  background-image: none !important;
+}
+
+/* Desktop */
+@media (min-width: 821px){
+  body.bg-viaggio{
+    background-image: url("assets/img/sfondo-viaggio-webp.png") !important;
+    background-size: cover !important;
+    background-position: center top !important;
+    background-repeat: no-repeat !important;
+    background-attachment: scroll !important;
+  }
+}
+
+/* Mobile */
+@media (max-width: 820px), (orientation: portrait){
+  body.bg-viaggio{
+    background-image: url("assets/img/sfondo-viaggio-mobile.png") !important;
+    background-size: cover !important;
+    background-position: center top !important;
+    background-repeat: no-repeat !important;
+    background-attachment: scroll !important;
+  }
+}
