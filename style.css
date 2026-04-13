@@ -365,3 +365,45 @@ body.bg-viaggio{
     background-position: center;
   }
 }
+/* ===== VIAGGIO: full page (desktop + mobile) ===== */
+body.bg-viaggio::before{
+  background-image: url("assets/img/sfondo-viaggio-web.png");
+  background-size: cover;         /* riempie tutto */
+  background-position: center;    /* niente bande */
+  background-repeat: no-repeat;
+}
+
+/* mobile: usa la versione verticale */
+@media (max-width: 820px), (orientation: portrait){
+  body.bg-viaggio::before{
+    background-image: url("assets/img/sfondo-viaggio-mobile.png");
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+/* ===== MARATRE: leggibilità (forzato) ===== */
+.maratre{
+  font-family:"Maratre","Cormorant Garamond",serif !important;
+  letter-spacing: .02em;
+}
+
+/* dimensioni leggibili */
+.names.maratre{
+  font-size: clamp(40px, 4.2vw, 58px) !important;
+  line-height: 1.05 !important;
+}
+
+.date.maratre{
+  font-size: clamp(20px, 2.2vw, 28px) !important;
+  letter-spacing: .14em !important;
+}
+
+.title.maratre{
+  font-size: clamp(26px, 3vw, 34px) !important;
+}
+
+.bold.maratre,
+.block .maratre{
+  font-size: clamp(18px, 2vw, 24px) !important;
+}
