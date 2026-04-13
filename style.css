@@ -65,10 +65,19 @@ body.bg-menu::before{
 }
 
 /* VIAGGIO = francobollo */
-body.bg-viaggio::before{
-  background-image: url("assets/img/sfondo-viaggio-2.PNG");
-  background-position: center;
-  background-size: cover;
+body.bg-viaggio{
+  background-image: url("assets/img/sfondo-viaggio-2.jpeg"); /* o .PNG: usa il nome reale */
+  background-repeat: no-repeat;
+
+  /* IMPORTANTISSIMO: evita tagli */
+  background-size: contain;
+  background-position: center top;
+
+  /* riempie gli spazi laterali/sotto con “carta” */
+  background-color: #f6efe6; /* se vuoi lo regoliamo sul colore esatto */
+  
+  /* evita glitch su Safari */
+  background-attachment: scroll;
 }
 
 /* iOS/mobile: niente fixed (glitch frequenti) */
