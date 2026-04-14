@@ -575,3 +575,61 @@ body.bg-menu{
     font-size: 19px;
   }
 }
+
+
+
+
+
+/* ===== FIX DEFINITIVO MOBILE + SFONDI ===== */
+
+/* RSVP e MENU: niente deformazione dei cuori */
+body.rsvp-page{
+  background-size: cover !important;
+  background-position: top center !important;
+}
+
+/* Mobile: cuori più bassi */
+@media (max-width:820px), (orientation:portrait){
+  body.rsvp-page{
+    background-size: cover !important;
+    background-position: center 42% !important;
+  }
+}
+
+/* Viaggio: immagine distribuita lungo tutta la pagina */
+body.viaggio-page{
+  background-size: 100% 100% !important;
+  background-position: top center !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Card più trasparenti da mobile */
+@media (max-width:820px), (orientation:portrait){
+  .card{
+    background: rgba(255,255,255,.42) !important;
+    backdrop-filter: blur(.6px) !important;
+    -webkit-backdrop-filter: blur(.6px) !important;
+  }
+}
+
+/* Testi importanti più grandi */
+.block .maratre,
+.bold.maratre{
+  font-size: 30px !important;
+  line-height: 1.15 !important;
+}
+
+.title.maratre{
+  font-size: 42px !important;
+  line-height: 1.1 !important;
+}
+
+@media (max-width:420px){
+  .block .maratre,
+  .bold.maratre{
+    font-size: 28px !important;
+  }
+
+  .title.maratre{
+    font-size: 40px !important;
+  }
