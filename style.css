@@ -9,303 +9,80 @@
 
 *{ box-sizing:border-box; }
 
-/* ===== BASE ===== */
-html, body{ height:100%; }
+/* =========================
+   SFONDI GENERALI
+========================= */
 
-body{
-  margin:0;
-  color:var(--ink);
-  background-color:var(--paper);
-  font-family:"Cormorant Garamond", serif;
-
-  /* Sfondo gestito SOLO qui (niente pseudo-elementi) */
-  background-repeat:no-repeat;
-  background-size:cover;       /* full screen */
-  background-position:center;
-  background-attachment:fixed; /* desktop ok */
-
-  min-height:100vh;
-  min-height:100svh;
-  min-height:-webkit-fill-available;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
 }
 
-/* ===== SFONDI DESKTOP ===== */
-/* RSVP + MENU */
-body.bg-rsvp,
-body.bg-menu{
-  background-image:url("assets/img/sfondo-rsvp-2.PNG");
-  background-position:left top; /* cuori a sinistra */
+body {
+  background-color: #f8f2e8;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
 }
 
-/* VIAGGIO */
-body.bg-viaggio{
-  background-image:url("assets/img/sfondo-viaggio-webp.png");
-  background-repeat:no-repeat;
-  background-size:cover;
-  background-position: center 80% !important; /* fa vedere lo skyline */
-}
-
-/* ===== MOBILE ===== */
-@media (max-width: 820px), (orientation: portrait){
-  body{
-    background-attachment:scroll; /* evita bug iOS */
-  }
-
-  /* RSVP + MENU: usa versione mobile */
-  body.bg-rsvp,
-  body.bg-menu{
-    background-image:url("assets/img/sfondo-rsvp-mobile.PNG");
-    background-position:left top; /* stessa logica del menu */
-  }
-
-  /* VIAGGIO: usa versione mobile */
-body.bg-viaggio{
-  background-image:url("assets/img/sfondo-viaggio-mobile.png");
-  background-size:cover;
-  background-position:center 80%;
-}
-}
-
-/* ===== LAYOUT (lasciato come deve stare: card centrata) ===== */
-.page{
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  padding:56px 18px;
-  gap:22px;
-}
-
-.hero{
-  text-align:center;
-  margin-top:8px;
-}
-
-/* NAV */
-.nav{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:14px;
-  margin:0 auto 14px;
-  padding:10px 0 14px;
-  width:min(720px, 100%);
-  border-bottom: 1px solid rgba(244,233,214,.85);
-}
-
-.nav__link{
-  text-decoration:none;
-  color: var(--muted);
-  font-weight:600;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  font-size:14px;
-  padding:8px 4px;
-}
-
-.nav__sep{ color: rgba(31,47,74,.32); font-size:14px; }
-.nav__link.is-active{ color: var(--ink); }
-.nav__link:hover{ color: var(--ink); }
-
-/* CARD: centrata */
-.card{
-  width:min(680px, 100%);
-  text-align:center;
-  padding:32px 22px;
-  background: var(--card);
-  border-radius:16px;
-  border:1px solid var(--line);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
-  margin-left:auto;
-  margin-right:auto;
-}
-
-/* Tipografia base */
-.lead{ font-size:26px; margin:0 0 6px; }
-.lead2{ font-size:22px; margin:0 0 18px; }
-
-.date{
-  letter-spacing:0.18em;
-  font-weight:600;
-  margin:0 0 26px;
-  font-size:20px;
-}
-
-.block{ margin:18px 0 0; font-size:22px; }
-.bold{ font-weight:600; }
-
-.title{ font-size:24px; margin:0 0 8px; font-weight:600; }
-.small{ margin:0 0 12px; color:var(--muted); font-size:18px; }
-
-/* Form: solo lui a sinistra (card resta centrata) */
-.form{ text-align:left; margin-top:14px; }
-.row{ margin:14px 0; }
-
-.label{
-  display:block;
-  font-size:18px;
-  margin:0 0 8px;
-  font-weight:600;
-  color:var(--ink);
-}
-
-.input{
-  width:100%;
-  padding:12px;
-  border-radius:12px;
-  border:1px solid var(--line);
-  background: rgba(255,255,255,.88);
-  font-family: inherit;
-  font-size:19px;
-  outline:none;
-  color:var(--ink);
-}
-
-.textarea{ resize: vertical; }
-
-.segmented{ display:flex; gap:10px; }
-.seg{
-  flex:1;
-  border:1px solid var(--line);
-  border-radius:12px;
-  overflow:hidden;
-  background: rgba(255,255,255,.75);
-}
-.seg input{ display:none; }
-.seg span{
-  display:block;
-  padding:12px 10px;
-  text-align:center;
-  cursor:pointer;
-  font-size:19px;
-  color:var(--ink);
-}
-.seg input:checked + span{
-  background: rgba(31,47,74,.08);
-  font-weight:700;
-}
-
-.people{ display:flex; flex-direction:column; gap:10px; }
-.personRow{ display:flex; gap:10px; align-items:center; }
-.personRow .input{ flex:1; }
-
-/* Bottoni */
-button, .btn{ -webkit-appearance:none; appearance:none; }
-.btn{
-  border:1px solid var(--line);
-  background: rgba(255,255,255,.78);
-  padding:10px 12px;
-  border-radius:12px;
-  cursor:pointer;
-  font-family: inherit;
-  font-size:17px;
-  color:var(--ink) !important;
-  -webkit-text-fill-color: var(--ink) !important;
-}
-.btn.primary{
-  width:100%;
-  padding:12px 14px;
-  font-size:19px;
-  font-weight:700;
-  background-color: rgba(255,255,255,.92) !important;
-  border:1px solid rgba(31,47,74,.22) !important;
-}
-.btn.primary:disabled{ opacity:.7; }
-
-/* Map */
-.mapWrap{
-  margin:16px 0 0;
-  border:1px solid rgba(31,47,74,.16);
-  border-radius:18px;
-  overflow:hidden;
-  background: rgba(255,255,255,.72);
-  box-shadow: 0 10px 30px rgba(31,47,74,.08);
-}
-.mapBar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:10px 14px;
-  border-bottom:1px solid rgba(31,47,74,.12);
-  color: var(--muted);
-  font-size:14px;
-}
-.mapLabel{ letter-spacing:.06em; text-transform:uppercase; font-weight:600; }
-.mapLink{
-  text-decoration:none;
-  color: var(--ink);
-  font-weight:700;
-  letter-spacing:.06em;
-  text-transform:uppercase;
-  font-size:13px;
-  padding:6px 10px;
-  border:1px solid rgba(31,47,74,.18);
-  border-radius:999px;
-  background: rgba(255,255,255,.65);
-}
-.mapWrap iframe{ width:100%; height:420px; border:0; display:block; }
-
-@media (max-width: 420px){
-  .lead{ font-size:22px; }
-  .lead2{ font-size:18px; }
-  .block{ font-size:20px; }
-  .date{ font-size:18px; }
-  .mapWrap iframe{ height:340px; }
-}
-
-/* ===== VIAGGIO: fai vedere lo skyline ===== */
-body.bg-viaggio{
-  background-position: center bottom !important;
-}
-
-/* mobile: spesso serve ancora più "bottom" */
-@media (max-width: 820px), (orientation: portrait){
-  body.bg-viaggio{
-    background-position: center 85% !important; /* spinge verso il basso senza sparire del tutto l’alto */
-  }
-}
 
 /* =========================
-   SFONDI DEFINITIVI (no pseudo-elementi)
-   ========================= */
+   PAGINA RSVP / CUORI
+========================= */
 
-body{
-  background-repeat: no-repeat;
-  background-size: cover;         /* schermo pieno */
-  background-position: center;    /* default */
-  background-attachment: fixed;   /* desktop */
-  min-height: 100vh;
+body.rsvp-page {
+  background-image: url("sfondo-rsvp-webp.png");
 }
 
-/* RSVP + MENU (desktop) */
-body.bg-rsvp,
-body.bg-menu{
-  background-image: url("assets/img/sfondo-rsvp-2.PNG");
-  background-position: left top;  /* cuori a sinistra */
+
+/* =========================
+   PAGINA VIAGGIO
+========================= */
+
+body.viaggio-page {
+  background-image: url("sfondo-viaggio-webp.png");
 }
 
-/* VIAGGIO (desktop) */
-body.bg-viaggio{
-  background-image: url("assets/img/sfondo-viaggio-webp.png");
-  background-position: center;    /* se serve lo bilanciamo a % */
-}
 
-/* MOBILE: evita bug iOS + usa immagini mobile */
-@media (max-width: 820px), (orientation: portrait){
-  body{
-    background-attachment: scroll; /* fondamentale: evita “sfondo che si interrompe” */
-    min-height: 100svh;
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+  body.rsvp-page {
+    background-image: url("sfondo-rsvp-mobile.png");
+    background-size: cover;
+    background-position: top center;
   }
 
-  body.bg-rsvp,
-  body.bg-menu{
-    background-image: url("assets/img/sfondo-rsvp-mobile.PNG");
-    background-position: left top;
+  body.viaggio-page {
+    background-image: url("sfondo-viaggio-mobile.png");
+    background-size: cover;
+    background-position: top center;
   }
+}
 
-  body.bg-viaggio{
-    background-image: url("assets/img/sfondo-viaggio-mobile.png");
-    background-position: center;
+
+/* =========================
+   CONTENUTO / CARD
+   Non modifica lo stile della card,
+   serve solo a mantenerla centrata.
+========================= */
+
+.page-wrapper {
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 48px 20px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .page-wrapper {
+    min-height: 100dvh;
+    padding: 32px 16px;
   }
 }
