@@ -48,7 +48,9 @@ body.bg-menu{
 /* VIAGGIO */
 body.bg-viaggio{
   background-image:url("assets/img/sfondo-viaggio-webp.png");
-  background-position:center top;
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-position: center 80% !important; /* fa vedere lo skyline */
 }
 
 /* ===== MOBILE ===== */
@@ -65,10 +67,11 @@ body.bg-viaggio{
   }
 
   /* VIAGGIO: usa versione mobile */
-  body.bg-viaggio{
-    background-image:url("assets/img/sfondo-viaggio-mobile.png");
-    background-position:center top;
-  }
+body.bg-viaggio{
+  background-image:url("assets/img/sfondo-viaggio-mobile.png");
+  background-size:cover;
+  background-position:center 80%;
+}
 }
 
 /* ===== LAYOUT (lasciato come deve stare: card centrata) ===== */
