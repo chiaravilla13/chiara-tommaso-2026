@@ -514,3 +514,64 @@ button,
     height:340px;
   }
 }
+
+
+
+
+
+
+
+/* ===== CORREZIONI FINALI SFONDI + LEGGIBILITÀ ===== */
+
+/* 1–2. Cuori RSVP e Menu coerenti e meno alti da mobile */
+body.rsvp-page,
+body.bg-rsvp,
+body.bg-menu{
+  background-size: cover;
+  background-position: top center;
+}
+
+@media (max-width:820px), (orientation:portrait){
+  body.rsvp-page,
+  body.bg-rsvp,
+  body.bg-menu{
+    background-size: cover;
+    background-position: center 34%;
+  }
+}
+
+/* 3. Card più trasparenti da mobile */
+@media (max-width:820px), (orientation:portrait){
+  .card{
+    background: rgba(255,255,255,.50);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+  }
+}
+
+/* 4. Testi importanti più leggibili */
+.block,
+.block p,
+.bold,
+.title,
+.date{
+  font-size: clamp(22px, 2.4vw, 28px);
+}
+
+.small{
+  font-size: clamp(19px, 2vw, 23px);
+}
+
+@media (max-width:420px){
+  .block,
+  .block p,
+  .bold,
+  .title,
+  .date{
+    font-size: 22px;
+  }
+
+  .small{
+    font-size: 19px;
+  }
+}
