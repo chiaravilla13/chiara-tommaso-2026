@@ -635,3 +635,22 @@ body.viaggio-page{
   .title.maratre{
     font-size: 40px !important;
   }
+
+/* ===== FIX CUORI MOBILE RSVP + MENU ===== */
+
+@media (max-width:820px), (orientation:portrait){
+  body.rsvp-page,
+  body.bg-rsvp,
+  body.bg-menu{
+    background-image:url("assets/img/sfondo-rsvp-mobile.png") !important;
+
+    /* mantiene i cuori grandi come nel menu, ma senza schiacciarli */
+    background-size:125% auto !important;
+
+    /* stessa altezza di RSVP, ma più centrati come menu */
+    background-position:center 84px !important;
+
+    background-repeat:no-repeat !important;
+    background-color:#f6efe6 !important;
+  }
+}
