@@ -5,6 +5,14 @@
   --ivory:#F4E9D6;
   --card:rgba(255,255,255,.66);
   --line:rgba(31,47,74,.16);
+  
+  /* ...le tue variabili esistenti... */
+
+  /* Scala tipografica (3 livelli) */
+  --fs-lg: 30px;   /* titoli / frasi principali */
+  --fs-md: 25px;   /* testo base */
+  --fs-sm: 20px;   /* descrizioni / helper */
+}
 }
 
 *{
@@ -654,3 +662,19 @@ body.viaggio-page{
     background-color:#f6efe6 !important;
   }
 }
+
+.card{
+  font-size: var(--fs-text);
+  line-height: 1.25;
+}
+
+.title{ font-size: var(--fs-title); }
+.lead, .lead2{ font-size: var(--fs-title); }
+
+.block, .date{ font-size: var(--fs-text); }
+
+.small, .hint, .check, .label{ font-size: var(--fs-help); }
+
+.input, .seg span{ font-size: var(--fs-text); }
+.btn{ font-size: var(--fs-help); }
+.btn.primary{ font-size: var(--fs-text); }
